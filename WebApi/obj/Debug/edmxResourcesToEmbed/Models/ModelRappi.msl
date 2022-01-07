@@ -1,0 +1,374 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="bdrappiModelStoreContainer" CdmEntityContainer="bdrappiEntities1">
+    <EntitySetMapping Name="CalificacionRappitendero">
+      <EntityTypeMapping TypeName="bdrappiModel.CalificacionRappitendero">
+        <MappingFragment StoreEntitySet="CalificacionRappitendero">
+          <ScalarProperty Name="id_califrappiden" ColumnName="id_califrappiden" />
+          <ScalarProperty Name="calificacion" ColumnName="calificacion" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="id_rappitendero" ColumnName="id_rappitendero" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Categoría">
+      <EntityTypeMapping TypeName="bdrappiModel.Categoría">
+        <MappingFragment StoreEntitySet="Categoría">
+          <ScalarProperty Name="id_categoria" ColumnName="id_categoria" />
+          <ScalarProperty Name="id_empresa" ColumnName="id_empresa" />
+          <ScalarProperty Name="nom_categoria" ColumnName="nom_categoria" />
+          <ScalarProperty Name="descrip_categoria" ColumnName="descrip_categoria" />
+          <ScalarProperty Name="estado_categoria" ColumnName="estado_categoria" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ciudad">
+      <EntityTypeMapping TypeName="bdrappiModel.Ciudad">
+        <MappingFragment StoreEntitySet="Ciudad">
+          <ScalarProperty Name="id_ciudad" ColumnName="id_ciudad" />
+          <ScalarProperty Name="nom_ciudad" ColumnName="nom_ciudad" />
+          <ScalarProperty Name="id_pais" ColumnName="id_pais" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cliente">
+      <EntityTypeMapping TypeName="bdrappiModel.Cliente">
+        <MappingFragment StoreEntitySet="Cliente">
+          <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
+          <ScalarProperty Name="CodigoTelef" ColumnName="CodigoTelef" />
+          <ScalarProperty Name="validarcodigo" ColumnName="validarcodigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CuentaEmpresa">
+      <EntityTypeMapping TypeName="bdrappiModel.CuentaEmpresa">
+        <MappingFragment StoreEntitySet="CuentaEmpresa">
+          <ScalarProperty Name="id_titular" ColumnName="id_titular" />
+          <ScalarProperty Name="nom_titular" ColumnName="nom_titular" />
+          <ScalarProperty Name="tipo_documento" ColumnName="tipo_documento" />
+          <ScalarProperty Name="tipo_cuenta" ColumnName="tipo_cuenta" />
+          <ScalarProperty Name="num_cuenta" ColumnName="num_cuenta" />
+          <ScalarProperty Name="num_interban" ColumnName="num_interban" />
+          <ScalarProperty Name="domi_fiscal" ColumnName="domi_fiscal" />
+          <ScalarProperty Name="num_titular" ColumnName="num_titular" />
+          <ScalarProperty Name="correo_titular" ColumnName="correo_titular" />
+          <ScalarProperty Name="id_país" ColumnName="id_país" />
+          <ScalarProperty Name="id_entidad" ColumnName="id_entidad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cupón_descuento">
+      <EntityTypeMapping TypeName="bdrappiModel.Cupón_descuento">
+        <MappingFragment StoreEntitySet="Cupón_descuento">
+          <ScalarProperty Name="id_cupon" ColumnName="id_cupon" />
+          <ScalarProperty Name="codig_cupon" ColumnName="codig_cupon" />
+          <ScalarProperty Name="porcentaje_cupon" ColumnName="porcentaje_cupon" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Detalle_Pedido">
+      <EntityTypeMapping TypeName="bdrappiModel.Detalle_Pedido">
+        <MappingFragment StoreEntitySet="Detalle_Pedido">
+          <ScalarProperty Name="id_detalle_pedido" ColumnName="id_detalle_pedido" />
+          <ScalarProperty Name="id_producto" ColumnName="id_producto" />
+          <ScalarProperty Name="id_pedido" ColumnName="id_pedido" />
+          <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+          <ScalarProperty Name="subtotal_productos" ColumnName="subtotal_productos" />
+          <ScalarProperty Name="extras" ColumnName="extras" />
+          <ScalarProperty Name="direccion_entrega" ColumnName="direccion_entrega" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Distrito">
+      <EntityTypeMapping TypeName="bdrappiModel.Distrito">
+        <MappingFragment StoreEntitySet="Distrito">
+          <ScalarProperty Name="id_distrito" ColumnName="id_distrito" />
+          <ScalarProperty Name="nom_distrito" ColumnName="nom_distrito" />
+          <ScalarProperty Name="direccion" ColumnName="direccion" />
+          <ScalarProperty Name="id_ciudad" ColumnName="id_ciudad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Empresa">
+      <EntityTypeMapping TypeName="bdrappiModel.Empresa">
+        <MappingFragment StoreEntitySet="Empresa">
+          <ScalarProperty Name="id_empresa" ColumnName="id_empresa" />
+          <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+          <ScalarProperty Name="id_rubro" ColumnName="id_rubro" />
+          <ScalarProperty Name="id_titular" ColumnName="id_titular" />
+          <ScalarProperty Name="nom_tienda" ColumnName="nom_tienda" />
+          <ScalarProperty Name="modelo_tienda" ColumnName="modelo_tienda" />
+          <ScalarProperty Name="tipo_persona" ColumnName="tipo_persona" />
+          <ScalarProperty Name="num_ruc" ColumnName="num_ruc" />
+          <ScalarProperty Name="num_cuenta" ColumnName="num_cuenta" />
+          <ScalarProperty Name="razon_social" ColumnName="razon_social" />
+          <ScalarProperty Name="codigo_referido" ColumnName="codigo_referido" />
+          <ScalarProperty Name="estado_empresa" ColumnName="estado_empresa" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Entidad_Financiera">
+      <EntityTypeMapping TypeName="bdrappiModel.Entidad_Financiera">
+        <MappingFragment StoreEntitySet="Entidad_Financiera">
+          <ScalarProperty Name="id_entidad" ColumnName="id_entidad" />
+          <ScalarProperty Name="nom_entidad" ColumnName="nom_entidad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EntregaProducto">
+      <EntityTypeMapping TypeName="bdrappiModel.EntregaProducto">
+        <MappingFragment StoreEntitySet="EntregaProducto">
+          <ScalarProperty Name="id_entrega" ColumnName="id_entrega" />
+          <ScalarProperty Name="id_rappitendero" ColumnName="id_rappitendero" />
+          <ScalarProperty Name="id_pedido" ColumnName="id_pedido" />
+          <ScalarProperty Name="tiempo" ColumnName="tiempo" />
+          <ScalarProperty Name="distancia_total" ColumnName="distancia_total" />
+          <ScalarProperty Name="descrip_recoger" ColumnName="descrip_recoger" />
+          <ScalarProperty Name="descrip_entrega" ColumnName="descrip_entrega" />
+          <ScalarProperty Name="descrip_producto" ColumnName="descrip_producto" />
+          <ScalarProperty Name="cantid_producto" ColumnName="cantid_producto" />
+          <ScalarProperty Name="ganancia_total" ColumnName="ganancia_total" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="facturacion">
+      <EntityTypeMapping TypeName="bdrappiModel.facturacion">
+        <MappingFragment StoreEntitySet="facturacion">
+          <ScalarProperty Name="id_facturacion" ColumnName="id_facturacion" />
+          <ScalarProperty Name="id_pedido" ColumnName="id_pedido" />
+          <ScalarProperty Name="nombre_usuario" ColumnName="nombre_usuario" />
+          <ScalarProperty Name="descrip_pedido" ColumnName="descrip_pedido" />
+          <ScalarProperty Name="direccion_pedido" ColumnName="direccion_pedido" />
+          <ScalarProperty Name="tiempo_pedido" ColumnName="tiempo_pedido" />
+          <ScalarProperty Name="costo_producto" ColumnName="costo_producto" />
+          <ScalarProperty Name="entrega_domicilo" ColumnName="entrega_domicilo" />
+          <ScalarProperty Name="propina" ColumnName="propina" />
+          <ScalarProperty Name="Total_Pago" ColumnName="Total_Pago" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ListaPago">
+      <EntityTypeMapping TypeName="bdrappiModel.ListaPago">
+        <MappingFragment StoreEntitySet="ListaPago">
+          <ScalarProperty Name="id_listaPago" ColumnName="id_listaPago" />
+          <ScalarProperty Name="id_Mpago" ColumnName="id_Mpago" />
+          <ScalarProperty Name="tipo1" ColumnName="tipo1" />
+          <ScalarProperty Name="tarjeta1" ColumnName="tarjeta1" />
+          <ScalarProperty Name="tarjeta2" ColumnName="tarjeta2" />
+          <ScalarProperty Name="tarjeta3" ColumnName="tarjeta3" />
+          <ScalarProperty Name="tarjeta4" ColumnName="tarjeta4" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Método_Pago">
+      <EntityTypeMapping TypeName="bdrappiModel.Método_Pago">
+        <MappingFragment StoreEntitySet="Método_Pago">
+          <ScalarProperty Name="id_Mpago" ColumnName="id_Mpago" />
+          <ScalarProperty Name="tipo_pago" ColumnName="tipo_pago" />
+          <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="N_Tarjeta_Pago">
+      <EntityTypeMapping TypeName="bdrappiModel.N_Tarjeta_Pago">
+        <MappingFragment StoreEntitySet="N_Tarjeta_Pago">
+          <ScalarProperty Name="id_ntpago" ColumnName="id_ntpago" />
+          <ScalarProperty Name="id_Mpago" ColumnName="id_Mpago" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="apellido" ColumnName="apellido" />
+          <ScalarProperty Name="número_tarjeta" ColumnName="número_tarjeta" />
+          <ScalarProperty Name="fecha_expiración" ColumnName="fecha_expiración" />
+          <ScalarProperty Name="codigo_cvv" ColumnName="codigo_cvv" />
+          <ScalarProperty Name="id_cupon" ColumnName="id_cupon" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pago_Rappitendero">
+      <EntityTypeMapping TypeName="bdrappiModel.Pago_Rappitendero">
+        <MappingFragment StoreEntitySet="Pago_Rappitendero">
+          <ScalarProperty Name="id_pagoRappi" ColumnName="id_pagoRappi" />
+          <ScalarProperty Name="monto" ColumnName="monto" />
+          <ScalarProperty Name="id_pedido" ColumnName="id_pedido" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pais">
+      <EntityTypeMapping TypeName="bdrappiModel.Pais">
+        <MappingFragment StoreEntitySet="Pais">
+          <ScalarProperty Name="id_pais" ColumnName="id_pais" />
+          <ScalarProperty Name="nom_pais" ColumnName="nom_pais" />
+          <ScalarProperty Name="codigopostal" ColumnName="codigopostal" />
+          <ScalarProperty Name="imagen_pais" ColumnName="imagen_pais" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pedido">
+      <EntityTypeMapping TypeName="bdrappiModel.Pedido">
+        <MappingFragment StoreEntitySet="Pedido">
+          <ScalarProperty Name="id_pedido" ColumnName="id_pedido" />
+          <ScalarProperty Name="id_sucursal" ColumnName="id_sucursal" />
+          <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+          <ScalarProperty Name="estado_pedido" ColumnName="estado_pedido" />
+          <ScalarProperty Name="Tiempo_preparacion" ColumnName="Tiempo_preparacion" />
+          <ScalarProperty Name="propina" ColumnName="propina" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Producto">
+      <EntityTypeMapping TypeName="bdrappiModel.Producto">
+        <MappingFragment StoreEntitySet="Producto">
+          <ScalarProperty Name="id_producto" ColumnName="id_producto" />
+          <ScalarProperty Name="id_categoria" ColumnName="id_categoria" />
+          <ScalarProperty Name="nom_producto" ColumnName="nom_producto" />
+          <ScalarProperty Name="descrip_producto" ColumnName="descrip_producto" />
+          <ScalarProperty Name="precio_producto" ColumnName="precio_producto" />
+          <ScalarProperty Name="foto_producto" ColumnName="foto_producto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Rappitendero">
+      <EntityTypeMapping TypeName="bdrappiModel.Rappitendero">
+        <MappingFragment StoreEntitySet="Rappitendero">
+          <ScalarProperty Name="id_rappitendero" ColumnName="id_rappitendero" />
+          <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+          <ScalarProperty Name="foto_dnidel" ColumnName="foto_dnidel" />
+          <ScalarProperty Name="foto_dnitra" ColumnName="foto_dnitra" />
+          <ScalarProperty Name="fecha_vencimiento" ColumnName="fecha_vencimiento" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Registrar_Tarjeta">
+      <EntityTypeMapping TypeName="bdrappiModel.Registrar_Tarjeta">
+        <MappingFragment StoreEntitySet="Registrar_Tarjeta">
+          <ScalarProperty Name="id_RTarjeta" ColumnName="id_RTarjeta" />
+          <ScalarProperty Name="id_ntpago" ColumnName="id_ntpago" />
+          <ScalarProperty Name="n_tarjeta" ColumnName="n_tarjeta" />
+          <ScalarProperty Name="fecha_tarjeta" ColumnName="fecha_tarjeta" />
+          <ScalarProperty Name="cvv" ColumnName="cvv" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Representante_legal">
+      <EntityTypeMapping TypeName="bdrappiModel.Representante_legal">
+        <MappingFragment StoreEntitySet="Representante_legal">
+          <ScalarProperty Name="id_rep" ColumnName="id_rep" />
+          <ScalarProperty Name="nom_rep" ColumnName="nom_rep" />
+          <ScalarProperty Name="ape_rep" ColumnName="ape_rep" />
+          <ScalarProperty Name="tipo_rep" ColumnName="tipo_rep" />
+          <ScalarProperty Name="num_rep" ColumnName="num_rep" />
+          <ScalarProperty Name="id_empresa" ColumnName="id_empresa" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Resumen_Pago">
+      <EntityTypeMapping TypeName="bdrappiModel.Resumen_Pago">
+        <MappingFragment StoreEntitySet="Resumen_Pago">
+          <ScalarProperty Name="id_rpago" ColumnName="id_rpago" />
+          <ScalarProperty Name="id_detalle_pedido" ColumnName="id_detalle_pedido" />
+          <ScalarProperty Name="total_productos" ColumnName="total_productos" />
+          <ScalarProperty Name="tarifa_servicio" ColumnName="tarifa_servicio" />
+          <ScalarProperty Name="id_cupon" ColumnName="id_cupon" />
+          <ScalarProperty Name="Propina" ColumnName="Propina" />
+          <ScalarProperty Name="facturacion" ColumnName="facturacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Rubro">
+      <EntityTypeMapping TypeName="bdrappiModel.Rubro">
+        <MappingFragment StoreEntitySet="Rubro">
+          <ScalarProperty Name="id_rubro" ColumnName="id_rubro" />
+          <ScalarProperty Name="nom_rubro" ColumnName="nom_rubro" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sucursal">
+      <EntityTypeMapping TypeName="bdrappiModel.Sucursal">
+        <MappingFragment StoreEntitySet="Sucursal">
+          <ScalarProperty Name="id_sucursal" ColumnName="id_sucursal" />
+          <ScalarProperty Name="direccion_sucursal" ColumnName="direccion_sucursal" />
+          <ScalarProperty Name="id_empresa" ColumnName="id_empresa" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="bdrappiModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TiempEntregaProd">
+      <EntityTypeMapping TypeName="bdrappiModel.TiempEntregaProd">
+        <MappingFragment StoreEntitySet="TiempEntregaProd">
+          <ScalarProperty Name="id_tiempEntrega" ColumnName="id_tiempEntrega" />
+          <ScalarProperty Name="id_pedido" ColumnName="id_pedido" />
+          <ScalarProperty Name="direccion_entrega" ColumnName="direccion_entrega" />
+          <ScalarProperty Name="entrega_estimada" ColumnName="entrega_estimada" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TomaPedido">
+      <EntityTypeMapping TypeName="bdrappiModel.TomaPedido">
+        <MappingFragment StoreEntitySet="TomaPedido">
+          <ScalarProperty Name="id_tomaPedido" ColumnName="id_tomaPedido" />
+          <ScalarProperty Name="id_pedido" ColumnName="id_pedido" />
+          <ScalarProperty Name="direccion_recoger" ColumnName="direccion_recoger" />
+          <ScalarProperty Name="direccion_entrega" ColumnName="direccion_entrega" />
+          <ScalarProperty Name="ganancia_total" ColumnName="ganancia_total" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="toppings">
+      <EntityTypeMapping TypeName="bdrappiModel.toppings">
+        <MappingFragment StoreEntitySet="toppings">
+          <ScalarProperty Name="id_topping" ColumnName="id_topping" />
+          <ScalarProperty Name="nom_topping" ColumnName="nom_topping" />
+          <ScalarProperty Name="descrip_topping" ColumnName="descrip_topping" />
+          <ScalarProperty Name="precio_topping" ColumnName="precio_topping" />
+          <ScalarProperty Name="id_producto" ColumnName="id_producto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Transporte">
+      <EntityTypeMapping TypeName="bdrappiModel.Transporte">
+        <MappingFragment StoreEntitySet="Transporte">
+          <ScalarProperty Name="id_transporte" ColumnName="id_transporte" />
+          <ScalarProperty Name="id_rappitendero" ColumnName="id_rappitendero" />
+          <ScalarProperty Name="tipo_transporte" ColumnName="tipo_transporte" />
+          <ScalarProperty Name="foto_licenciadel" ColumnName="foto_licenciadel" />
+          <ScalarProperty Name="foto_licenciatra" ColumnName="foto_licenciatra" />
+          <ScalarProperty Name="fecha_venc_lic" ColumnName="fecha_venc_lic" />
+          <ScalarProperty Name="foto_soadel" ColumnName="foto_soadel" />
+          <ScalarProperty Name="foto_soaad" ColumnName="foto_soaad" />
+          <ScalarProperty Name="fec_venc_soa" ColumnName="fec_venc_soa" />
+          <ScalarProperty Name="num_placa" ColumnName="num_placa" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Usuario">
+      <EntityTypeMapping TypeName="bdrappiModel.Usuario">
+        <MappingFragment StoreEntitySet="Usuario">
+          <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+          <ScalarProperty Name="nom_usuario" ColumnName="nom_usuario" />
+          <ScalarProperty Name="ape_usuario" ColumnName="ape_usuario" />
+          <ScalarProperty Name="correo_usuario" ColumnName="correo_usuario" />
+          <ScalarProperty Name="clave_usuario" ColumnName="clave_usuario" />
+          <ScalarProperty Name="celular_usuario" ColumnName="celular_usuario" />
+          <ScalarProperty Name="T_documento" ColumnName="T_documento" />
+          <ScalarProperty Name="N_documento" ColumnName="N_documento" />
+          <ScalarProperty Name="fechnac" ColumnName="fechnac" />
+          <ScalarProperty Name="sexo" ColumnName="sexo" />
+          <ScalarProperty Name="id_pais" ColumnName="id_pais" />
+          <ScalarProperty Name="direccion_usuario" ColumnName="direccion_usuario" />
+          <ScalarProperty Name="foto_usuario" ColumnName="foto_usuario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

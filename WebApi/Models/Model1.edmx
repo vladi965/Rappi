@@ -1,0 +1,2216 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="bdrappiModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CalificacionRappitendero">
+          <Key>
+            <PropertyRef Name="id_califrappiden" />
+          </Key>
+          <Property Name="id_califrappiden" Type="int" Nullable="false" />
+          <Property Name="calificacion" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="id_rappitendero" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Categoría">
+          <Key>
+            <PropertyRef Name="id_categoria" />
+          </Key>
+          <Property Name="id_categoria" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_empresa" Type="int" Nullable="false" />
+          <Property Name="nom_categoria" Type="varchar" MaxLength="50" />
+          <Property Name="descrip_categoria" Type="varchar" MaxLength="50" />
+          <Property Name="estado_categoria" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Ciudad">
+          <Key>
+            <PropertyRef Name="id_ciudad" />
+          </Key>
+          <Property Name="id_ciudad" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nom_ciudad" Type="varchar" MaxLength="100" />
+          <Property Name="id_pais" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cliente">
+          <Key>
+            <PropertyRef Name="id_cliente" />
+          </Key>
+          <Property Name="id_cliente" Type="int" Nullable="false" />
+          <Property Name="CodigoTelef" Type="char" MaxLength="6" />
+          <Property Name="validarcodigo" Type="bit" />
+        </EntityType>
+        <EntityType Name="CuentaEmpresa">
+          <Key>
+            <PropertyRef Name="id_titular" />
+          </Key>
+          <Property Name="id_titular" Type="int" Nullable="false" />
+          <Property Name="nom_titular" Type="varchar" MaxLength="100" />
+          <Property Name="tipo_documento" Type="varchar" MaxLength="50" />
+          <Property Name="tipo_cuenta" Type="varchar" MaxLength="50" />
+          <Property Name="num_cuenta" Type="varchar" MaxLength="50" />
+          <Property Name="num_interban" Type="varchar" MaxLength="50" />
+          <Property Name="domi_fiscal" Type="varchar" MaxLength="100" />
+          <Property Name="num_titular" Type="int" />
+          <Property Name="correo_titular" Type="varchar" MaxLength="50" />
+          <Property Name="id_país" Type="int" Nullable="false" />
+          <Property Name="id_entidad" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cupón_descuento">
+          <Key>
+            <PropertyRef Name="id_cupon" />
+          </Key>
+          <Property Name="id_cupon" Type="int" Nullable="false" />
+          <Property Name="codig_cupon" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="porcentaje_cupon" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Detalle_Pedido">
+          <Key>
+            <PropertyRef Name="id_detalle_pedido" />
+          </Key>
+          <Property Name="id_detalle_pedido" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_producto" Type="int" Nullable="false" />
+          <Property Name="id_pedido" Type="int" Nullable="false" />
+          <Property Name="cantidad" Type="int" />
+          <Property Name="subtotal_productos" Type="float" />
+          <Property Name="extras" Type="varchar" MaxLength="50" />
+          <Property Name="direccion_entrega" Type="varchar" MaxLength="50" />
+          <Property Name="Total" Type="float" />
+        </EntityType>
+        <EntityType Name="Distrito">
+          <Key>
+            <PropertyRef Name="id_distrito" />
+          </Key>
+          <Property Name="id_distrito" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nom_distrito" Type="varchar" MaxLength="100" />
+          <Property Name="direccion" Type="varchar" MaxLength="100" />
+          <Property Name="id_ciudad" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Empresa">
+          <Key>
+            <PropertyRef Name="id_empresa" />
+          </Key>
+          <Property Name="id_empresa" Type="int" Nullable="false" />
+          <Property Name="id_usuario" Type="int" Nullable="false" />
+          <Property Name="id_rubro" Type="int" Nullable="false" />
+          <Property Name="id_titular" Type="int" Nullable="false" />
+          <Property Name="nom_tienda" Type="varchar" MaxLength="100" />
+          <Property Name="modelo_tienda" Type="varchar" MaxLength="50" />
+          <Property Name="tipo_persona" Type="varchar" MaxLength="100" />
+          <Property Name="num_ruc" Type="char" MaxLength="11" />
+          <Property Name="num_cuenta" Type="char" MaxLength="12" />
+          <Property Name="razon_social" Type="varchar" MaxLength="100" />
+          <Property Name="codigo_referido" Type="varchar" MaxLength="100" />
+          <Property Name="estado_empresa" Type="char" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="Entidad_Financiera">
+          <Key>
+            <PropertyRef Name="id_entidad" />
+          </Key>
+          <Property Name="id_entidad" Type="int" Nullable="false" />
+          <Property Name="nom_entidad" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="EntregaProducto">
+          <Key>
+            <PropertyRef Name="id_entrega" />
+          </Key>
+          <Property Name="id_entrega" Type="int" Nullable="false" />
+          <Property Name="id_rappitendero" Type="int" Nullable="false" />
+          <Property Name="id_pedido" Type="int" Nullable="false" />
+          <Property Name="tiempo" Type="datetime" Nullable="false" />
+          <Property Name="distancia_total" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="descrip_recoger" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="descrip_entrega" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="descrip_producto" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="cantid_producto" Type="float" Nullable="false" />
+          <Property Name="ganancia_total" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="facturacion">
+          <Key>
+            <PropertyRef Name="id_facturacion" />
+          </Key>
+          <Property Name="id_facturacion" Type="int" Nullable="false" />
+          <Property Name="id_pedido" Type="int" Nullable="false" />
+          <Property Name="nombre_usuario" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="descrip_pedido" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="direccion_pedido" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="tiempo_pedido" Type="datetime" Nullable="false" />
+          <Property Name="costo_producto" Type="float" Nullable="false" />
+          <Property Name="entrega_domicilo" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="propina" Type="float" Nullable="false" />
+          <Property Name="Total_Pago" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ListaPago">
+          <Key>
+            <PropertyRef Name="id_listaPago" />
+          </Key>
+          <Property Name="id_listaPago" Type="int" Nullable="false" />
+          <Property Name="id_Mpago" Type="int" Nullable="false" />
+          <Property Name="tipo1" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="tarjeta1" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="tarjeta2" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="tarjeta3" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="tarjeta4" Type="varchar" MaxLength="150" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Método_Pago">
+          <Key>
+            <PropertyRef Name="id_Mpago" />
+          </Key>
+          <Property Name="id_Mpago" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tipo_pago" Type="varchar" MaxLength="50" />
+          <Property Name="id_cliente" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="N_Tarjeta_Pago">
+          <Key>
+            <PropertyRef Name="id_ntpago" />
+          </Key>
+          <Property Name="id_ntpago" Type="int" Nullable="false" />
+          <Property Name="id_Mpago" Type="int" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" />
+          <Property Name="apellido" Type="varchar" MaxLength="50" />
+          <Property Name="número_tarjeta" Type="char" MaxLength="15" />
+          <Property Name="fecha_expiración" Type="datetime" />
+          <Property Name="codigo_cvv" Type="char" MaxLength="3" />
+          <Property Name="id_cupon" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PagoRappitendero">
+          <Key>
+            <PropertyRef Name="id_pagoRappi" />
+          </Key>
+          <Property Name="id_pagoRappi" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_pedido" Type="int" Nullable="false" />
+          <Property Name="monto" Type="varchar" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="Pais">
+          <Key>
+            <PropertyRef Name="id_pais" />
+          </Key>
+          <Property Name="id_pais" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nom_pais" Type="varchar" MaxLength="50" />
+          <Property Name="codigopostal" Type="varchar" MaxLength="10" />
+          <Property Name="imagen_pais" Type="image" />
+        </EntityType>
+        <EntityType Name="Pedido">
+          <Key>
+            <PropertyRef Name="id_pedido" />
+          </Key>
+          <Property Name="id_pedido" Type="int" Nullable="false" />
+          <Property Name="id_sucursal" Type="int" Nullable="false" />
+          <Property Name="id_usuario" Type="int" Nullable="false" />
+          <Property Name="estado_pedido" Type="varchar" MaxLength="1" />
+          <Property Name="Tiempo_preparacion" Type="datetime" />
+          <Property Name="propina" Type="float" />
+        </EntityType>
+        <EntityType Name="Producto">
+          <Key>
+            <PropertyRef Name="id_producto" />
+          </Key>
+          <Property Name="id_producto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_categoria" Type="int" Nullable="false" />
+          <Property Name="nom_producto" Type="varchar" MaxLength="50" />
+          <Property Name="descrip_producto" Type="varchar" MaxLength="100" />
+          <Property Name="precio_producto" Type="float" />
+          <Property Name="foto_producto" Type="image" />
+        </EntityType>
+        <EntityType Name="Rappitendero">
+          <Key>
+            <PropertyRef Name="id_rappitendero" />
+          </Key>
+          <Property Name="id_rappitendero" Type="int" Nullable="false" />
+          <Property Name="id_usuario" Type="int" Nullable="false" />
+          <Property Name="foto_dnidel" Type="image" />
+          <Property Name="foto_dnitra" Type="image" />
+          <Property Name="fecha_vencimiento" Type="date" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RegistrarTarjeta">
+          <Key>
+            <PropertyRef Name="id_rTarjeta" />
+          </Key>
+          <Property Name="id_rTarjeta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="n_tarjeta" Type="varchar" MaxLength="100" />
+          <Property Name="nombre" Type="varchar" MaxLength="100" />
+          <Property Name="apellido" Type="varchar" MaxLength="100" />
+          <Property Name="fecha_tarjeta" Type="varchar" MaxLength="40" />
+          <Property Name="cvv" Type="varchar" MaxLength="4" />
+        </EntityType>
+        <EntityType Name="Representante_legal">
+          <Key>
+            <PropertyRef Name="id_rep" />
+          </Key>
+          <Property Name="id_rep" Type="int" Nullable="false" />
+          <Property Name="nom_rep" Type="varchar" MaxLength="100" />
+          <Property Name="ape_rep" Type="varchar" MaxLength="50" />
+          <Property Name="tipo_rep" Type="varchar" MaxLength="50" />
+          <Property Name="num_rep" Type="varchar" MaxLength="50" />
+          <Property Name="id_empresa" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Resumen_Pago">
+          <Key>
+            <PropertyRef Name="id_rpago" />
+          </Key>
+          <Property Name="id_rpago" Type="int" Nullable="false" />
+          <Property Name="id_detalle_pedido" Type="int" Nullable="false" />
+          <Property Name="id_cupon" Type="int" Nullable="false" />
+          <Property Name="total_productos" Type="varchar" MaxLength="10" />
+          <Property Name="costo_producto" Type="varchar" MaxLength="20" />
+          <Property Name="Propina" Type="varchar" MaxLength="10" />
+          <Property Name="tarifa_servicio" Type="varchar" MaxLength="10" />
+          <Property Name="total_cobrar" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Rubro">
+          <Key>
+            <PropertyRef Name="id_rubro" />
+          </Key>
+          <Property Name="id_rubro" Type="int" Nullable="false" />
+          <Property Name="nom_rubro" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Sucursal">
+          <Key>
+            <PropertyRef Name="id_sucursal" />
+          </Key>
+          <Property Name="id_sucursal" Type="int" Nullable="false" />
+          <Property Name="direccion_sucursal" Type="varchar" MaxLength="50" />
+          <Property Name="id_empresa" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="TiempEntregaProd">
+          <Key>
+            <PropertyRef Name="id_tiempEntrega" />
+          </Key>
+          <Property Name="id_tiempEntrega" Type="int" Nullable="false" />
+          <Property Name="id_pedido" Type="int" Nullable="false" />
+          <Property Name="direccion_entrega" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="entrega_estimada" Type="varchar" MaxLength="15" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TomaPedido">
+          <Key>
+            <PropertyRef Name="id_tomaPedido" />
+          </Key>
+          <Property Name="id_tomaPedido" Type="int" Nullable="false" />
+          <Property Name="id_pedido" Type="int" Nullable="false" />
+          <Property Name="direccion_recoger" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="direccion_entrega" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="ganancia_total" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="toppings">
+          <Key>
+            <PropertyRef Name="id_topping" />
+          </Key>
+          <Property Name="id_topping" Type="int" Nullable="false" />
+          <Property Name="nom_topping" Type="varchar" MaxLength="100" />
+          <Property Name="descrip_topping" Type="varchar" MaxLength="100" />
+          <Property Name="precio_topping" Type="float" />
+          <Property Name="id_producto" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Transporte">
+          <Key>
+            <PropertyRef Name="id_transporte" />
+          </Key>
+          <Property Name="id_transporte" Type="int" Nullable="false" />
+          <Property Name="id_rappitendero" Type="int" Nullable="false" />
+          <Property Name="tipo_transporte" Type="int" />
+          <Property Name="foto_licenciadel" Type="image" />
+          <Property Name="foto_licenciatra" Type="image" />
+          <Property Name="fecha_venc_lic" Type="varchar" MaxLength="50" />
+          <Property Name="foto_soadel" Type="image" />
+          <Property Name="foto_soaad" Type="image" />
+          <Property Name="fec_venc_soa" Type="varchar" MaxLength="50" />
+          <Property Name="num_placa" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="id_usuario" />
+          </Key>
+          <Property Name="id_usuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nom_usuario" Type="varchar" MaxLength="100" />
+          <Property Name="ape_usuario" Type="varchar" MaxLength="100" />
+          <Property Name="correo_usuario" Type="varchar" MaxLength="100" />
+          <Property Name="clave_usuario" Type="varchar" MaxLength="64" />
+          <Property Name="celular_usuario" Type="char" MaxLength="9" />
+          <Property Name="T_documento" Type="char" MaxLength="8" />
+          <Property Name="N_documento" Type="char" MaxLength="15" />
+          <Property Name="fechnac" Type="char" MaxLength="10" />
+          <Property Name="sexo" Type="char" MaxLength="1" />
+          <Property Name="id_pais" Type="int" Nullable="false" />
+          <Property Name="direccion_usuario" Type="varchar" MaxLength="50" />
+          <Property Name="foto_usuario" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_CalificacionRappitendero_Rappitendero">
+          <End Role="Rappitendero" Type="Self.Rappitendero" Multiplicity="1" />
+          <End Role="CalificacionRappitendero" Type="Self.CalificacionRappitendero" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rappitendero">
+              <PropertyRef Name="id_rappitendero" />
+            </Principal>
+            <Dependent Role="CalificacionRappitendero">
+              <PropertyRef Name="id_rappitendero" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Categoría_EMPRESA">
+          <End Role="Empresa" Type="Self.Empresa" Multiplicity="1" />
+          <End Role="Categoría" Type="Self.Categoría" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empresa">
+              <PropertyRef Name="id_empresa" />
+            </Principal>
+            <Dependent Role="Categoría">
+              <PropertyRef Name="id_empresa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ciudad_Pais">
+          <End Role="Pais" Type="Self.Pais" Multiplicity="1" />
+          <End Role="Ciudad" Type="Self.Ciudad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pais">
+              <PropertyRef Name="id_pais" />
+            </Principal>
+            <Dependent Role="Ciudad">
+              <PropertyRef Name="id_pais" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cliente_Usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="id_usuario" />
+            </Principal>
+            <Dependent Role="Cliente">
+              <PropertyRef Name="id_cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CuentaEmpresa_Entidad_Financiera">
+          <End Role="Entidad_Financiera" Type="Self.Entidad_Financiera" Multiplicity="1" />
+          <End Role="CuentaEmpresa" Type="Self.CuentaEmpresa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Entidad_Financiera">
+              <PropertyRef Name="id_entidad" />
+            </Principal>
+            <Dependent Role="CuentaEmpresa">
+              <PropertyRef Name="id_entidad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CuentaEmpresa_Pais">
+          <End Role="Pais" Type="Self.Pais" Multiplicity="1" />
+          <End Role="CuentaEmpresa" Type="Self.CuentaEmpresa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pais">
+              <PropertyRef Name="id_pais" />
+            </Principal>
+            <Dependent Role="CuentaEmpresa">
+              <PropertyRef Name="id_país" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Detalle_Pedido_Pedido">
+          <End Role="Pedido" Type="Self.Pedido" Multiplicity="1" />
+          <End Role="Detalle_Pedido" Type="Self.Detalle_Pedido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pedido">
+              <PropertyRef Name="id_pedido" />
+            </Principal>
+            <Dependent Role="Detalle_Pedido">
+              <PropertyRef Name="id_pedido" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Detalle_Pedido_Producto">
+          <End Role="Producto" Type="Self.Producto" Multiplicity="1" />
+          <End Role="Detalle_Pedido" Type="Self.Detalle_Pedido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Producto">
+              <PropertyRef Name="id_producto" />
+            </Principal>
+            <Dependent Role="Detalle_Pedido">
+              <PropertyRef Name="id_producto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Detalle_Pedido_Resumen_Pago">
+          <End Role="Resumen_Pago" Type="Self.Resumen_Pago" Multiplicity="1" />
+          <End Role="Detalle_Pedido" Type="Self.Detalle_Pedido" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Resumen_Pago">
+              <PropertyRef Name="id_rpago" />
+            </Principal>
+            <Dependent Role="Detalle_Pedido">
+              <PropertyRef Name="id_detalle_pedido" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Distrito_Ciudad">
+          <End Role="Ciudad" Type="Self.Ciudad" Multiplicity="1" />
+          <End Role="Distrito" Type="Self.Distrito" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ciudad">
+              <PropertyRef Name="id_ciudad" />
+            </Principal>
+            <Dependent Role="Distrito">
+              <PropertyRef Name="id_ciudad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EMPRESA_CuentaEmpresa">
+          <End Role="CuentaEmpresa" Type="Self.CuentaEmpresa" Multiplicity="1" />
+          <End Role="Empresa" Type="Self.Empresa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CuentaEmpresa">
+              <PropertyRef Name="id_titular" />
+            </Principal>
+            <Dependent Role="Empresa">
+              <PropertyRef Name="id_titular" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EMPRESA_RUBRO">
+          <End Role="Rubro" Type="Self.Rubro" Multiplicity="1" />
+          <End Role="Empresa" Type="Self.Empresa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rubro">
+              <PropertyRef Name="id_rubro" />
+            </Principal>
+            <Dependent Role="Empresa">
+              <PropertyRef Name="id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EMPRESA_Usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Empresa" Type="Self.Empresa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="id_usuario" />
+            </Principal>
+            <Dependent Role="Empresa">
+              <PropertyRef Name="id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EntregaProducto_Pedido">
+          <End Role="Pedido" Type="Self.Pedido" Multiplicity="1" />
+          <End Role="EntregaProducto" Type="Self.EntregaProducto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pedido">
+              <PropertyRef Name="id_pedido" />
+            </Principal>
+            <Dependent Role="EntregaProducto">
+              <PropertyRef Name="id_pedido" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EntregaProducto_Rappitendero">
+          <End Role="Rappitendero" Type="Self.Rappitendero" Multiplicity="1" />
+          <End Role="EntregaProducto" Type="Self.EntregaProducto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rappitendero">
+              <PropertyRef Name="id_rappitendero" />
+            </Principal>
+            <Dependent Role="EntregaProducto">
+              <PropertyRef Name="id_rappitendero" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_facturacion_Pedido">
+          <End Role="Pedido" Type="Self.Pedido" Multiplicity="1" />
+          <End Role="facturacion" Type="Self.facturacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pedido">
+              <PropertyRef Name="id_pedido" />
+            </Principal>
+            <Dependent Role="facturacion">
+              <PropertyRef Name="id_pedido" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ListaPago_Método_Pago">
+          <End Role="Método_Pago" Type="Self.Método_Pago" Multiplicity="1" />
+          <End Role="ListaPago" Type="Self.ListaPago" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Método_Pago">
+              <PropertyRef Name="id_Mpago" />
+            </Principal>
+            <Dependent Role="ListaPago">
+              <PropertyRef Name="id_Mpago" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Método_Pago_Cliente">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
+          <End Role="Método_Pago" Type="Self.Método_Pago" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="id_cliente" />
+            </Principal>
+            <Dependent Role="Método_Pago">
+              <PropertyRef Name="id_cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_N_Tarjeta_Pago_Cupón_descuento">
+          <End Role="Cupón_descuento" Type="Self.Cupón_descuento" Multiplicity="1" />
+          <End Role="N_Tarjeta_Pago" Type="Self.N_Tarjeta_Pago" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cupón_descuento">
+              <PropertyRef Name="id_cupon" />
+            </Principal>
+            <Dependent Role="N_Tarjeta_Pago">
+              <PropertyRef Name="id_cupon" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_N_Tarjeta_Pago_Método_Pago">
+          <End Role="Método_Pago" Type="Self.Método_Pago" Multiplicity="1" />
+          <End Role="N_Tarjeta_Pago" Type="Self.N_Tarjeta_Pago" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Método_Pago">
+              <PropertyRef Name="id_Mpago" />
+            </Principal>
+            <Dependent Role="N_Tarjeta_Pago">
+              <PropertyRef Name="id_Mpago" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pedido_Sucursal">
+          <End Role="Sucursal" Type="Self.Sucursal" Multiplicity="1" />
+          <End Role="Pedido" Type="Self.Pedido" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Sucursal">
+              <PropertyRef Name="id_sucursal" />
+            </Principal>
+            <Dependent Role="Pedido">
+              <PropertyRef Name="id_pedido" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Producto_Categoría">
+          <End Role="Categoría" Type="Self.Categoría" Multiplicity="1" />
+          <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categoría">
+              <PropertyRef Name="id_categoria" />
+            </Principal>
+            <Dependent Role="Producto">
+              <PropertyRef Name="id_categoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rappitendero_Usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Rappitendero" Type="Self.Rappitendero" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="id_usuario" />
+            </Principal>
+            <Dependent Role="Rappitendero">
+              <PropertyRef Name="id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Representante_legal_EMPRESA">
+          <End Role="Empresa" Type="Self.Empresa" Multiplicity="1" />
+          <End Role="Representante_legal" Type="Self.Representante_legal" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Empresa">
+              <PropertyRef Name="id_empresa" />
+            </Principal>
+            <Dependent Role="Representante_legal">
+              <PropertyRef Name="id_rep" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Resumen_Pago_Cupón_descuento">
+          <End Role="Cupón_descuento" Type="Self.Cupón_descuento" Multiplicity="1" />
+          <End Role="Resumen_Pago" Type="Self.Resumen_Pago" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cupón_descuento">
+              <PropertyRef Name="id_cupon" />
+            </Principal>
+            <Dependent Role="Resumen_Pago">
+              <PropertyRef Name="id_cupon" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sucursal_EMPRESA">
+          <End Role="Empresa" Type="Self.Empresa" Multiplicity="1" />
+          <End Role="Sucursal" Type="Self.Sucursal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empresa">
+              <PropertyRef Name="id_empresa" />
+            </Principal>
+            <Dependent Role="Sucursal">
+              <PropertyRef Name="id_empresa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TiempEntregaProd_Pedido">
+          <End Role="Pedido" Type="Self.Pedido" Multiplicity="1" />
+          <End Role="TiempEntregaProd" Type="Self.TiempEntregaProd" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pedido">
+              <PropertyRef Name="id_pedido" />
+            </Principal>
+            <Dependent Role="TiempEntregaProd">
+              <PropertyRef Name="id_pedido" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TomaPedido_Pedido">
+          <End Role="Pedido" Type="Self.Pedido" Multiplicity="1" />
+          <End Role="TomaPedido" Type="Self.TomaPedido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pedido">
+              <PropertyRef Name="id_pedido" />
+            </Principal>
+            <Dependent Role="TomaPedido">
+              <PropertyRef Name="id_pedido" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_toppings_Producto">
+          <End Role="Producto" Type="Self.Producto" Multiplicity="1" />
+          <End Role="toppings" Type="Self.toppings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Producto">
+              <PropertyRef Name="id_producto" />
+            </Principal>
+            <Dependent Role="toppings">
+              <PropertyRef Name="id_producto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Transporte_Rappitendero1">
+          <End Role="Rappitendero" Type="Self.Rappitendero" Multiplicity="1" />
+          <End Role="Transporte" Type="Self.Transporte" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rappitendero">
+              <PropertyRef Name="id_rappitendero" />
+            </Principal>
+            <Dependent Role="Transporte">
+              <PropertyRef Name="id_rappitendero" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Usuario_Pais">
+          <End Role="Pais" Type="Self.Pais" Multiplicity="1" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pais">
+              <PropertyRef Name="id_pais" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="id_pais" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="bdrappiModelStoreContainer">
+          <EntitySet Name="CalificacionRappitendero" EntityType="Self.CalificacionRappitendero" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Categoría" EntityType="Self.Categoría" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ciudad" EntityType="Self.Ciudad" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cliente" EntityType="Self.Cliente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CuentaEmpresa" EntityType="Self.CuentaEmpresa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cupón_descuento" EntityType="Self.Cupón_descuento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Detalle_Pedido" EntityType="Self.Detalle_Pedido" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Distrito" EntityType="Self.Distrito" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Empresa" EntityType="Self.Empresa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Entidad_Financiera" EntityType="Self.Entidad_Financiera" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EntregaProducto" EntityType="Self.EntregaProducto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="facturacion" EntityType="Self.facturacion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ListaPago" EntityType="Self.ListaPago" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Método_Pago" EntityType="Self.Método_Pago" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="N_Tarjeta_Pago" EntityType="Self.N_Tarjeta_Pago" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PagoRappitendero" EntityType="Self.PagoRappitendero" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pais" EntityType="Self.Pais" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pedido" EntityType="Self.Pedido" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Producto" EntityType="Self.Producto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rappitendero" EntityType="Self.Rappitendero" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RegistrarTarjeta" EntityType="Self.RegistrarTarjeta" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Representante_legal" EntityType="Self.Representante_legal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Resumen_Pago" EntityType="Self.Resumen_Pago" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rubro" EntityType="Self.Rubro" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sucursal" EntityType="Self.Sucursal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TiempEntregaProd" EntityType="Self.TiempEntregaProd" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TomaPedido" EntityType="Self.TomaPedido" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="toppings" EntityType="Self.toppings" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Transporte" EntityType="Self.Transporte" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_CalificacionRappitendero_Rappitendero" Association="Self.FK_CalificacionRappitendero_Rappitendero">
+            <End Role="Rappitendero" EntitySet="Rappitendero" />
+            <End Role="CalificacionRappitendero" EntitySet="CalificacionRappitendero" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Categoría_EMPRESA" Association="Self.FK_Categoría_EMPRESA">
+            <End Role="Empresa" EntitySet="Empresa" />
+            <End Role="Categoría" EntitySet="Categoría" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ciudad_Pais" Association="Self.FK_Ciudad_Pais">
+            <End Role="Pais" EntitySet="Pais" />
+            <End Role="Ciudad" EntitySet="Ciudad" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cliente_Usuario" Association="Self.FK_Cliente_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Cliente" EntitySet="Cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CuentaEmpresa_Entidad_Financiera" Association="Self.FK_CuentaEmpresa_Entidad_Financiera">
+            <End Role="Entidad_Financiera" EntitySet="Entidad_Financiera" />
+            <End Role="CuentaEmpresa" EntitySet="CuentaEmpresa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CuentaEmpresa_Pais" Association="Self.FK_CuentaEmpresa_Pais">
+            <End Role="Pais" EntitySet="Pais" />
+            <End Role="CuentaEmpresa" EntitySet="CuentaEmpresa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Detalle_Pedido_Pedido" Association="Self.FK_Detalle_Pedido_Pedido">
+            <End Role="Pedido" EntitySet="Pedido" />
+            <End Role="Detalle_Pedido" EntitySet="Detalle_Pedido" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Detalle_Pedido_Producto" Association="Self.FK_Detalle_Pedido_Producto">
+            <End Role="Producto" EntitySet="Producto" />
+            <End Role="Detalle_Pedido" EntitySet="Detalle_Pedido" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Detalle_Pedido_Resumen_Pago" Association="Self.FK_Detalle_Pedido_Resumen_Pago">
+            <End Role="Resumen_Pago" EntitySet="Resumen_Pago" />
+            <End Role="Detalle_Pedido" EntitySet="Detalle_Pedido" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Distrito_Ciudad" Association="Self.FK_Distrito_Ciudad">
+            <End Role="Ciudad" EntitySet="Ciudad" />
+            <End Role="Distrito" EntitySet="Distrito" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EMPRESA_CuentaEmpresa" Association="Self.FK_EMPRESA_CuentaEmpresa">
+            <End Role="CuentaEmpresa" EntitySet="CuentaEmpresa" />
+            <End Role="Empresa" EntitySet="Empresa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EMPRESA_RUBRO" Association="Self.FK_EMPRESA_RUBRO">
+            <End Role="Rubro" EntitySet="Rubro" />
+            <End Role="Empresa" EntitySet="Empresa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EMPRESA_Usuario" Association="Self.FK_EMPRESA_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Empresa" EntitySet="Empresa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EntregaProducto_Pedido" Association="Self.FK_EntregaProducto_Pedido">
+            <End Role="Pedido" EntitySet="Pedido" />
+            <End Role="EntregaProducto" EntitySet="EntregaProducto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EntregaProducto_Rappitendero" Association="Self.FK_EntregaProducto_Rappitendero">
+            <End Role="Rappitendero" EntitySet="Rappitendero" />
+            <End Role="EntregaProducto" EntitySet="EntregaProducto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_facturacion_Pedido" Association="Self.FK_facturacion_Pedido">
+            <End Role="Pedido" EntitySet="Pedido" />
+            <End Role="facturacion" EntitySet="facturacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ListaPago_Método_Pago" Association="Self.FK_ListaPago_Método_Pago">
+            <End Role="Método_Pago" EntitySet="Método_Pago" />
+            <End Role="ListaPago" EntitySet="ListaPago" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Método_Pago_Cliente" Association="Self.FK_Método_Pago_Cliente">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="Método_Pago" EntitySet="Método_Pago" />
+          </AssociationSet>
+          <AssociationSet Name="FK_N_Tarjeta_Pago_Cupón_descuento" Association="Self.FK_N_Tarjeta_Pago_Cupón_descuento">
+            <End Role="Cupón_descuento" EntitySet="Cupón_descuento" />
+            <End Role="N_Tarjeta_Pago" EntitySet="N_Tarjeta_Pago" />
+          </AssociationSet>
+          <AssociationSet Name="FK_N_Tarjeta_Pago_Método_Pago" Association="Self.FK_N_Tarjeta_Pago_Método_Pago">
+            <End Role="Método_Pago" EntitySet="Método_Pago" />
+            <End Role="N_Tarjeta_Pago" EntitySet="N_Tarjeta_Pago" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pedido_Sucursal" Association="Self.FK_Pedido_Sucursal">
+            <End Role="Sucursal" EntitySet="Sucursal" />
+            <End Role="Pedido" EntitySet="Pedido" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Producto_Categoría" Association="Self.FK_Producto_Categoría">
+            <End Role="Categoría" EntitySet="Categoría" />
+            <End Role="Producto" EntitySet="Producto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rappitendero_Usuario" Association="Self.FK_Rappitendero_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Rappitendero" EntitySet="Rappitendero" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Representante_legal_EMPRESA" Association="Self.FK_Representante_legal_EMPRESA">
+            <End Role="Empresa" EntitySet="Empresa" />
+            <End Role="Representante_legal" EntitySet="Representante_legal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Resumen_Pago_Cupón_descuento" Association="Self.FK_Resumen_Pago_Cupón_descuento">
+            <End Role="Cupón_descuento" EntitySet="Cupón_descuento" />
+            <End Role="Resumen_Pago" EntitySet="Resumen_Pago" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sucursal_EMPRESA" Association="Self.FK_Sucursal_EMPRESA">
+            <End Role="Empresa" EntitySet="Empresa" />
+            <End Role="Sucursal" EntitySet="Sucursal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TiempEntregaProd_Pedido" Association="Self.FK_TiempEntregaProd_Pedido">
+            <End Role="Pedido" EntitySet="Pedido" />
+            <End Role="TiempEntregaProd" EntitySet="TiempEntregaProd" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TomaPedido_Pedido" Association="Self.FK_TomaPedido_Pedido">
+            <End Role="Pedido" EntitySet="Pedido" />
+            <End Role="TomaPedido" EntitySet="TomaPedido" />
+          </AssociationSet>
+          <AssociationSet Name="FK_toppings_Producto" Association="Self.FK_toppings_Producto">
+            <End Role="Producto" EntitySet="Producto" />
+            <End Role="toppings" EntitySet="toppings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Transporte_Rappitendero1" Association="Self.FK_Transporte_Rappitendero1">
+            <End Role="Rappitendero" EntitySet="Rappitendero" />
+            <End Role="Transporte" EntitySet="Transporte" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Usuario_Pais" Association="Self.FK_Usuario_Pais">
+            <End Role="Pais" EntitySet="Pais" />
+            <End Role="Usuario" EntitySet="Usuario" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="bdrappiModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CalificacionRappitendero">
+          <Key>
+            <PropertyRef Name="id_califrappiden" />
+          </Key>
+          <Property Name="id_califrappiden" Type="Int32" Nullable="false" />
+          <Property Name="calificacion" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="id_rappitendero" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Rappitendero" Relationship="Self.FK_CalificacionRappitendero_Rappitendero" FromRole="CalificacionRappitendero" ToRole="Rappitendero" />
+        </EntityType>
+        <EntityType Name="Categoría">
+          <Key>
+            <PropertyRef Name="id_categoria" />
+          </Key>
+          <Property Name="id_categoria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_empresa" Type="Int32" Nullable="false" />
+          <Property Name="nom_categoria" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="descrip_categoria" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="estado_categoria" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Empresa" Relationship="Self.FK_Categoría_EMPRESA" FromRole="Categoría" ToRole="Empresa" />
+          <NavigationProperty Name="Producto" Relationship="Self.FK_Producto_Categoría" FromRole="Categoría" ToRole="Producto" />
+        </EntityType>
+        <EntityType Name="Ciudad">
+          <Key>
+            <PropertyRef Name="id_ciudad" />
+          </Key>
+          <Property Name="id_ciudad" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nom_ciudad" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="id_pais" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Pais" Relationship="Self.FK_Ciudad_Pais" FromRole="Ciudad" ToRole="Pais" />
+          <NavigationProperty Name="Distrito" Relationship="Self.FK_Distrito_Ciudad" FromRole="Ciudad" ToRole="Distrito" />
+        </EntityType>
+        <EntityType Name="Cliente">
+          <Key>
+            <PropertyRef Name="id_cliente" />
+          </Key>
+          <Property Name="id_cliente" Type="Int32" Nullable="false" />
+          <Property Name="CodigoTelef" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="validarcodigo" Type="Boolean" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK_Cliente_Usuario" FromRole="Cliente" ToRole="Usuario" />
+          <NavigationProperty Name="Método_Pago" Relationship="Self.FK_Método_Pago_Cliente" FromRole="Cliente" ToRole="Método_Pago" />
+        </EntityType>
+        <EntityType Name="CuentaEmpresa">
+          <Key>
+            <PropertyRef Name="id_titular" />
+          </Key>
+          <Property Name="id_titular" Type="Int32" Nullable="false" />
+          <Property Name="nom_titular" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="tipo_documento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="tipo_cuenta" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="num_cuenta" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="num_interban" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="domi_fiscal" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="num_titular" Type="Int32" />
+          <Property Name="correo_titular" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="id_país" Type="Int32" Nullable="false" />
+          <Property Name="id_entidad" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Entidad_Financiera" Relationship="Self.FK_CuentaEmpresa_Entidad_Financiera" FromRole="CuentaEmpresa" ToRole="Entidad_Financiera" />
+          <NavigationProperty Name="Pais" Relationship="Self.FK_CuentaEmpresa_Pais" FromRole="CuentaEmpresa" ToRole="Pais" />
+          <NavigationProperty Name="Empresa" Relationship="Self.FK_EMPRESA_CuentaEmpresa" FromRole="CuentaEmpresa" ToRole="Empresa" />
+        </EntityType>
+        <EntityType Name="Cupón_descuento">
+          <Key>
+            <PropertyRef Name="id_cupon" />
+          </Key>
+          <Property Name="id_cupon" Type="Int32" Nullable="false" />
+          <Property Name="codig_cupon" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="porcentaje_cupon" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="N_Tarjeta_Pago" Relationship="Self.FK_N_Tarjeta_Pago_Cupón_descuento" FromRole="Cupón_descuento" ToRole="N_Tarjeta_Pago" />
+          <NavigationProperty Name="Resumen_Pago" Relationship="Self.FK_Resumen_Pago_Cupón_descuento" FromRole="Cupón_descuento" ToRole="Resumen_Pago" />
+        </EntityType>
+        <EntityType Name="Detalle_Pedido">
+          <Key>
+            <PropertyRef Name="id_detalle_pedido" />
+          </Key>
+          <Property Name="id_detalle_pedido" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_producto" Type="Int32" Nullable="false" />
+          <Property Name="id_pedido" Type="Int32" Nullable="false" />
+          <Property Name="cantidad" Type="Int32" />
+          <Property Name="subtotal_productos" Type="Double" />
+          <Property Name="extras" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="direccion_entrega" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Total" Type="Double" />
+          <NavigationProperty Name="Pedido" Relationship="Self.FK_Detalle_Pedido_Pedido" FromRole="Detalle_Pedido" ToRole="Pedido" />
+          <NavigationProperty Name="Producto" Relationship="Self.FK_Detalle_Pedido_Producto" FromRole="Detalle_Pedido" ToRole="Producto" />
+          <NavigationProperty Name="Resumen_Pago" Relationship="Self.FK_Detalle_Pedido_Resumen_Pago" FromRole="Detalle_Pedido" ToRole="Resumen_Pago" />
+        </EntityType>
+        <EntityType Name="Distrito">
+          <Key>
+            <PropertyRef Name="id_distrito" />
+          </Key>
+          <Property Name="id_distrito" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nom_distrito" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="direccion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="id_ciudad" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Ciudad" Relationship="Self.FK_Distrito_Ciudad" FromRole="Distrito" ToRole="Ciudad" />
+        </EntityType>
+        <EntityType Name="Empresa">
+          <Key>
+            <PropertyRef Name="id_empresa" />
+          </Key>
+          <Property Name="id_empresa" Type="Int32" Nullable="false" />
+          <Property Name="id_usuario" Type="Int32" Nullable="false" />
+          <Property Name="id_rubro" Type="Int32" Nullable="false" />
+          <Property Name="id_titular" Type="Int32" Nullable="false" />
+          <Property Name="nom_tienda" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="modelo_tienda" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="tipo_persona" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="num_ruc" Type="String" MaxLength="11" FixedLength="true" Unicode="false" />
+          <Property Name="num_cuenta" Type="String" MaxLength="12" FixedLength="true" Unicode="false" />
+          <Property Name="razon_social" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="codigo_referido" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="estado_empresa" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Categoría" Relationship="Self.FK_Categoría_EMPRESA" FromRole="Empresa" ToRole="Categoría" />
+          <NavigationProperty Name="CuentaEmpresa" Relationship="Self.FK_EMPRESA_CuentaEmpresa" FromRole="Empresa" ToRole="CuentaEmpresa" />
+          <NavigationProperty Name="Rubro" Relationship="Self.FK_EMPRESA_RUBRO" FromRole="Empresa" ToRole="Rubro" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK_EMPRESA_Usuario" FromRole="Empresa" ToRole="Usuario" />
+          <NavigationProperty Name="Representante_legal" Relationship="Self.FK_Representante_legal_EMPRESA" FromRole="Empresa" ToRole="Representante_legal" />
+          <NavigationProperty Name="Sucursal" Relationship="Self.FK_Sucursal_EMPRESA" FromRole="Empresa" ToRole="Sucursal" />
+        </EntityType>
+        <EntityType Name="Entidad_Financiera">
+          <Key>
+            <PropertyRef Name="id_entidad" />
+          </Key>
+          <Property Name="id_entidad" Type="Int32" Nullable="false" />
+          <Property Name="nom_entidad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CuentaEmpresa" Relationship="Self.FK_CuentaEmpresa_Entidad_Financiera" FromRole="Entidad_Financiera" ToRole="CuentaEmpresa" />
+        </EntityType>
+        <EntityType Name="EntregaProducto">
+          <Key>
+            <PropertyRef Name="id_entrega" />
+          </Key>
+          <Property Name="id_entrega" Type="Int32" Nullable="false" />
+          <Property Name="id_rappitendero" Type="Int32" Nullable="false" />
+          <Property Name="id_pedido" Type="Int32" Nullable="false" />
+          <Property Name="tiempo" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="distancia_total" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="descrip_recoger" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="descrip_entrega" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="descrip_producto" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cantid_producto" Type="Double" Nullable="false" />
+          <Property Name="ganancia_total" Type="Double" Nullable="false" />
+          <NavigationProperty Name="Pedido" Relationship="Self.FK_EntregaProducto_Pedido" FromRole="EntregaProducto" ToRole="Pedido" />
+          <NavigationProperty Name="Rappitendero" Relationship="Self.FK_EntregaProducto_Rappitendero" FromRole="EntregaProducto" ToRole="Rappitendero" />
+        </EntityType>
+        <EntityType Name="facturacion">
+          <Key>
+            <PropertyRef Name="id_facturacion" />
+          </Key>
+          <Property Name="id_facturacion" Type="Int32" Nullable="false" />
+          <Property Name="id_pedido" Type="Int32" Nullable="false" />
+          <Property Name="nombre_usuario" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="descrip_pedido" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="direccion_pedido" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tiempo_pedido" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="costo_producto" Type="Double" Nullable="false" />
+          <Property Name="entrega_domicilo" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="propina" Type="Double" Nullable="false" />
+          <Property Name="Total_Pago" Type="Double" Nullable="false" />
+          <NavigationProperty Name="Pedido" Relationship="Self.FK_facturacion_Pedido" FromRole="facturacion" ToRole="Pedido" />
+        </EntityType>
+        <EntityType Name="ListaPago">
+          <Key>
+            <PropertyRef Name="id_listaPago" />
+          </Key>
+          <Property Name="id_listaPago" Type="Int32" Nullable="false" />
+          <Property Name="id_Mpago" Type="Int32" Nullable="false" />
+          <Property Name="tipo1" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tarjeta1" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tarjeta2" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tarjeta3" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tarjeta4" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Método_Pago" Relationship="Self.FK_ListaPago_Método_Pago" FromRole="ListaPago" ToRole="Método_Pago" />
+        </EntityType>
+        <EntityType Name="Método_Pago">
+          <Key>
+            <PropertyRef Name="id_Mpago" />
+          </Key>
+          <Property Name="id_Mpago" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tipo_pago" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="id_cliente" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Cliente" Relationship="Self.FK_Método_Pago_Cliente" FromRole="Método_Pago" ToRole="Cliente" />
+          <NavigationProperty Name="ListaPago" Relationship="Self.FK_ListaPago_Método_Pago" FromRole="Método_Pago" ToRole="ListaPago" />
+          <NavigationProperty Name="N_Tarjeta_Pago" Relationship="Self.FK_N_Tarjeta_Pago_Método_Pago" FromRole="Método_Pago" ToRole="N_Tarjeta_Pago" />
+        </EntityType>
+        <EntityType Name="N_Tarjeta_Pago">
+          <Key>
+            <PropertyRef Name="id_ntpago" />
+          </Key>
+          <Property Name="id_ntpago" Type="Int32" Nullable="false" />
+          <Property Name="id_Mpago" Type="Int32" Nullable="false" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="número_tarjeta" Type="String" MaxLength="15" FixedLength="true" Unicode="false" />
+          <Property Name="fecha_expiración" Type="DateTime" Precision="3" />
+          <Property Name="codigo_cvv" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="id_cupon" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Cupón_descuento" Relationship="Self.FK_N_Tarjeta_Pago_Cupón_descuento" FromRole="N_Tarjeta_Pago" ToRole="Cupón_descuento" />
+          <NavigationProperty Name="Método_Pago" Relationship="Self.FK_N_Tarjeta_Pago_Método_Pago" FromRole="N_Tarjeta_Pago" ToRole="Método_Pago" />
+        </EntityType>
+        <EntityType Name="Pais">
+          <Key>
+            <PropertyRef Name="id_pais" />
+          </Key>
+          <Property Name="id_pais" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nom_pais" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="codigopostal" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="imagen_pais" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Ciudad" Relationship="Self.FK_Ciudad_Pais" FromRole="Pais" ToRole="Ciudad" />
+          <NavigationProperty Name="CuentaEmpresa" Relationship="Self.FK_CuentaEmpresa_Pais" FromRole="Pais" ToRole="CuentaEmpresa" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK_Usuario_Pais" FromRole="Pais" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Pedido">
+          <Key>
+            <PropertyRef Name="id_pedido" />
+          </Key>
+          <Property Name="id_pedido" Type="Int32" Nullable="false" />
+          <Property Name="id_sucursal" Type="Int32" Nullable="false" />
+          <Property Name="id_usuario" Type="Int32" Nullable="false" />
+          <Property Name="estado_pedido" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="Tiempo_preparacion" Type="DateTime" Precision="3" />
+          <Property Name="propina" Type="Double" />
+          <NavigationProperty Name="Detalle_Pedido" Relationship="Self.FK_Detalle_Pedido_Pedido" FromRole="Pedido" ToRole="Detalle_Pedido" />
+          <NavigationProperty Name="EntregaProducto" Relationship="Self.FK_EntregaProducto_Pedido" FromRole="Pedido" ToRole="EntregaProducto" />
+          <NavigationProperty Name="facturacion" Relationship="Self.FK_facturacion_Pedido" FromRole="Pedido" ToRole="facturacion" />
+          <NavigationProperty Name="Sucursal" Relationship="Self.FK_Pedido_Sucursal" FromRole="Pedido" ToRole="Sucursal" />
+          <NavigationProperty Name="TiempEntregaProd" Relationship="Self.FK_TiempEntregaProd_Pedido" FromRole="Pedido" ToRole="TiempEntregaProd" />
+          <NavigationProperty Name="TomaPedido" Relationship="Self.FK_TomaPedido_Pedido" FromRole="Pedido" ToRole="TomaPedido" />
+        </EntityType>
+        <EntityType Name="Producto">
+          <Key>
+            <PropertyRef Name="id_producto" />
+          </Key>
+          <Property Name="id_producto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_categoria" Type="Int32" Nullable="false" />
+          <Property Name="nom_producto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="descrip_producto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="precio_producto" Type="Double" />
+          <Property Name="foto_producto" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Categoría" Relationship="Self.FK_Producto_Categoría" FromRole="Producto" ToRole="Categoría" />
+          <NavigationProperty Name="Detalle_Pedido" Relationship="Self.FK_Detalle_Pedido_Producto" FromRole="Producto" ToRole="Detalle_Pedido" />
+          <NavigationProperty Name="toppings" Relationship="Self.FK_toppings_Producto" FromRole="Producto" ToRole="toppings" />
+        </EntityType>
+        <EntityType Name="Rappitendero">
+          <Key>
+            <PropertyRef Name="id_rappitendero" />
+          </Key>
+          <Property Name="id_rappitendero" Type="Int32" Nullable="false" />
+          <Property Name="id_usuario" Type="Int32" Nullable="false" />
+          <Property Name="foto_dnidel" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="foto_dnitra" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="fecha_vencimiento" Type="DateTime" Precision="0" />
+          <Property Name="Descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="CalificacionRappitendero" Relationship="Self.FK_CalificacionRappitendero_Rappitendero" FromRole="Rappitendero" ToRole="CalificacionRappitendero" />
+          <NavigationProperty Name="EntregaProducto" Relationship="Self.FK_EntregaProducto_Rappitendero" FromRole="Rappitendero" ToRole="EntregaProducto" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK_Rappitendero_Usuario" FromRole="Rappitendero" ToRole="Usuario" />
+          <NavigationProperty Name="Transporte" Relationship="Self.FK_Transporte_Rappitendero1" FromRole="Rappitendero" ToRole="Transporte" />
+        </EntityType>
+        <EntityType Name="Representante_legal">
+          <Key>
+            <PropertyRef Name="id_rep" />
+          </Key>
+          <Property Name="id_rep" Type="Int32" Nullable="false" />
+          <Property Name="nom_rep" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ape_rep" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="tipo_rep" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="num_rep" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="id_empresa" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Empresa" Relationship="Self.FK_Representante_legal_EMPRESA" FromRole="Representante_legal" ToRole="Empresa" />
+        </EntityType>
+        <EntityType Name="Resumen_Pago">
+          <Key>
+            <PropertyRef Name="id_rpago" />
+          </Key>
+          <Property Name="id_rpago" Type="Int32" Nullable="false" />
+          <Property Name="id_detalle_pedido" Type="Int32" Nullable="false" />
+          <Property Name="total_productos" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="tarifa_servicio" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="id_cupon" Type="Int32" Nullable="false" />
+          <Property Name="Propina" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Cupón_descuento" Relationship="Self.FK_Resumen_Pago_Cupón_descuento" FromRole="Resumen_Pago" ToRole="Cupón_descuento" />
+          <NavigationProperty Name="Detalle_Pedido" Relationship="Self.FK_Detalle_Pedido_Resumen_Pago" FromRole="Resumen_Pago" ToRole="Detalle_Pedido" />
+          <Property Name="costo_producto" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="total_cobrar" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Rubro">
+          <Key>
+            <PropertyRef Name="id_rubro" />
+          </Key>
+          <Property Name="id_rubro" Type="Int32" Nullable="false" />
+          <Property Name="nom_rubro" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Empresa" Relationship="Self.FK_EMPRESA_RUBRO" FromRole="Rubro" ToRole="Empresa" />
+        </EntityType>
+        <EntityType Name="Sucursal">
+          <Key>
+            <PropertyRef Name="id_sucursal" />
+          </Key>
+          <Property Name="id_sucursal" Type="Int32" Nullable="false" />
+          <Property Name="direccion_sucursal" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="id_empresa" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Empresa" Relationship="Self.FK_Sucursal_EMPRESA" FromRole="Sucursal" ToRole="Empresa" />
+          <NavigationProperty Name="Pedido" Relationship="Self.FK_Pedido_Sucursal" FromRole="Sucursal" ToRole="Pedido" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TiempEntregaProd">
+          <Key>
+            <PropertyRef Name="id_tiempEntrega" />
+          </Key>
+          <Property Name="id_tiempEntrega" Type="Int32" Nullable="false" />
+          <Property Name="id_pedido" Type="Int32" Nullable="false" />
+          <Property Name="direccion_entrega" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="entrega_estimada" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Pedido" Relationship="Self.FK_TiempEntregaProd_Pedido" FromRole="TiempEntregaProd" ToRole="Pedido" />
+        </EntityType>
+        <EntityType Name="TomaPedido">
+          <Key>
+            <PropertyRef Name="id_tomaPedido" />
+          </Key>
+          <Property Name="id_tomaPedido" Type="Int32" Nullable="false" />
+          <Property Name="id_pedido" Type="Int32" Nullable="false" />
+          <Property Name="direccion_recoger" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="direccion_entrega" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ganancia_total" Type="Double" Nullable="false" />
+          <NavigationProperty Name="Pedido" Relationship="Self.FK_TomaPedido_Pedido" FromRole="TomaPedido" ToRole="Pedido" />
+        </EntityType>
+        <EntityType Name="toppings">
+          <Key>
+            <PropertyRef Name="id_topping" />
+          </Key>
+          <Property Name="id_topping" Type="Int32" Nullable="false" />
+          <Property Name="nom_topping" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="descrip_topping" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="precio_topping" Type="Double" />
+          <Property Name="id_producto" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Producto" Relationship="Self.FK_toppings_Producto" FromRole="toppings" ToRole="Producto" />
+        </EntityType>
+        <EntityType Name="Transporte">
+          <Key>
+            <PropertyRef Name="id_transporte" />
+          </Key>
+          <Property Name="id_transporte" Type="Int32" Nullable="false" />
+          <Property Name="id_rappitendero" Type="Int32" Nullable="false" />
+          <Property Name="tipo_transporte" Type="Int32" />
+          <Property Name="foto_licenciadel" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="foto_licenciatra" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="fecha_venc_lic" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="foto_soadel" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="foto_soaad" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="fec_venc_soa" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="num_placa" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Rappitendero" Relationship="Self.FK_Transporte_Rappitendero1" FromRole="Transporte" ToRole="Rappitendero" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="id_usuario" />
+          </Key>
+          <Property Name="id_usuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nom_usuario" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ape_usuario" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="correo_usuario" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="clave_usuario" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="celular_usuario" Type="String" MaxLength="9" FixedLength="true" Unicode="false" />
+          <Property Name="T_documento" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="N_documento" Type="String" MaxLength="15" FixedLength="true" Unicode="false" />
+          <Property Name="fechnac" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="sexo" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="id_pais" Type="Int32" Nullable="false" />
+          <Property Name="direccion_usuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="foto_usuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Cliente" Relationship="Self.FK_Cliente_Usuario" FromRole="Usuario" ToRole="Cliente" />
+          <NavigationProperty Name="Empresa" Relationship="Self.FK_EMPRESA_Usuario" FromRole="Usuario" ToRole="Empresa" />
+          <NavigationProperty Name="Pais" Relationship="Self.FK_Usuario_Pais" FromRole="Usuario" ToRole="Pais" />
+          <NavigationProperty Name="Rappitendero" Relationship="Self.FK_Rappitendero_Usuario" FromRole="Usuario" ToRole="Rappitendero" />
+        </EntityType>
+        <Association Name="FK_CalificacionRappitendero_Rappitendero">
+          <End Role="Rappitendero" Type="Self.Rappitendero" Multiplicity="1" />
+          <End Role="CalificacionRappitendero" Type="Self.CalificacionRappitendero" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rappitendero">
+              <PropertyRef Name="id_rappitendero" />
+            </Principal>
+            <Dependent Role="CalificacionRappitendero">
+              <PropertyRef Name="id_rappitendero" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Categoría_EMPRESA">
+          <End Role="Empresa" Type="Self.Empresa" Multiplicity="1" />
+          <End Role="Categoría" Type="Self.Categoría" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empresa">
+              <PropertyRef Name="id_empresa" />
+            </Principal>
+            <Dependent Role="Categoría">
+              <PropertyRef Name="id_empresa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Producto_Categoría">
+          <End Role="Categoría" Type="Self.Categoría" Multiplicity="1" />
+          <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categoría">
+              <PropertyRef Name="id_categoria" />
+            </Principal>
+            <Dependent Role="Producto">
+              <PropertyRef Name="id_categoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ciudad_Pais">
+          <End Role="Pais" Type="Self.Pais" Multiplicity="1" />
+          <End Role="Ciudad" Type="Self.Ciudad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pais">
+              <PropertyRef Name="id_pais" />
+            </Principal>
+            <Dependent Role="Ciudad">
+              <PropertyRef Name="id_pais" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Distrito_Ciudad">
+          <End Role="Ciudad" Type="Self.Ciudad" Multiplicity="1" />
+          <End Role="Distrito" Type="Self.Distrito" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ciudad">
+              <PropertyRef Name="id_ciudad" />
+            </Principal>
+            <Dependent Role="Distrito">
+              <PropertyRef Name="id_ciudad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cliente_Usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="id_usuario" />
+            </Principal>
+            <Dependent Role="Cliente">
+              <PropertyRef Name="id_cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Método_Pago_Cliente">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
+          <End Role="Método_Pago" Type="Self.Método_Pago" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="id_cliente" />
+            </Principal>
+            <Dependent Role="Método_Pago">
+              <PropertyRef Name="id_cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CuentaEmpresa_Entidad_Financiera">
+          <End Role="Entidad_Financiera" Type="Self.Entidad_Financiera" Multiplicity="1" />
+          <End Role="CuentaEmpresa" Type="Self.CuentaEmpresa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Entidad_Financiera">
+              <PropertyRef Name="id_entidad" />
+            </Principal>
+            <Dependent Role="CuentaEmpresa">
+              <PropertyRef Name="id_entidad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CuentaEmpresa_Pais">
+          <End Role="Pais" Type="Self.Pais" Multiplicity="1" />
+          <End Role="CuentaEmpresa" Type="Self.CuentaEmpresa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pais">
+              <PropertyRef Name="id_pais" />
+            </Principal>
+            <Dependent Role="CuentaEmpresa">
+              <PropertyRef Name="id_país" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EMPRESA_CuentaEmpresa">
+          <End Role="CuentaEmpresa" Type="Self.CuentaEmpresa" Multiplicity="1" />
+          <End Role="Empresa" Type="Self.Empresa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CuentaEmpresa">
+              <PropertyRef Name="id_titular" />
+            </Principal>
+            <Dependent Role="Empresa">
+              <PropertyRef Name="id_titular" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_N_Tarjeta_Pago_Cupón_descuento">
+          <End Role="Cupón_descuento" Type="Self.Cupón_descuento" Multiplicity="1" />
+          <End Role="N_Tarjeta_Pago" Type="Self.N_Tarjeta_Pago" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cupón_descuento">
+              <PropertyRef Name="id_cupon" />
+            </Principal>
+            <Dependent Role="N_Tarjeta_Pago">
+              <PropertyRef Name="id_cupon" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Resumen_Pago_Cupón_descuento">
+          <End Role="Cupón_descuento" Type="Self.Cupón_descuento" Multiplicity="1" />
+          <End Role="Resumen_Pago" Type="Self.Resumen_Pago" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cupón_descuento">
+              <PropertyRef Name="id_cupon" />
+            </Principal>
+            <Dependent Role="Resumen_Pago">
+              <PropertyRef Name="id_cupon" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Detalle_Pedido_Pedido">
+          <End Role="Pedido" Type="Self.Pedido" Multiplicity="1" />
+          <End Role="Detalle_Pedido" Type="Self.Detalle_Pedido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pedido">
+              <PropertyRef Name="id_pedido" />
+            </Principal>
+            <Dependent Role="Detalle_Pedido">
+              <PropertyRef Name="id_pedido" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Detalle_Pedido_Producto">
+          <End Role="Producto" Type="Self.Producto" Multiplicity="1" />
+          <End Role="Detalle_Pedido" Type="Self.Detalle_Pedido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Producto">
+              <PropertyRef Name="id_producto" />
+            </Principal>
+            <Dependent Role="Detalle_Pedido">
+              <PropertyRef Name="id_producto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Detalle_Pedido_Resumen_Pago">
+          <End Role="Resumen_Pago" Type="Self.Resumen_Pago" Multiplicity="1" />
+          <End Role="Detalle_Pedido" Type="Self.Detalle_Pedido" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Resumen_Pago">
+              <PropertyRef Name="id_rpago" />
+            </Principal>
+            <Dependent Role="Detalle_Pedido">
+              <PropertyRef Name="id_detalle_pedido" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EMPRESA_RUBRO">
+          <End Role="Rubro" Type="Self.Rubro" Multiplicity="1" />
+          <End Role="Empresa" Type="Self.Empresa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rubro">
+              <PropertyRef Name="id_rubro" />
+            </Principal>
+            <Dependent Role="Empresa">
+              <PropertyRef Name="id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EMPRESA_Usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Empresa" Type="Self.Empresa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="id_usuario" />
+            </Principal>
+            <Dependent Role="Empresa">
+              <PropertyRef Name="id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Representante_legal_EMPRESA">
+          <End Role="Empresa" Type="Self.Empresa" Multiplicity="1" />
+          <End Role="Representante_legal" Type="Self.Representante_legal" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Empresa">
+              <PropertyRef Name="id_empresa" />
+            </Principal>
+            <Dependent Role="Representante_legal">
+              <PropertyRef Name="id_rep" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sucursal_EMPRESA">
+          <End Role="Empresa" Type="Self.Empresa" Multiplicity="1" />
+          <End Role="Sucursal" Type="Self.Sucursal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empresa">
+              <PropertyRef Name="id_empresa" />
+            </Principal>
+            <Dependent Role="Sucursal">
+              <PropertyRef Name="id_empresa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EntregaProducto_Pedido">
+          <End Role="Pedido" Type="Self.Pedido" Multiplicity="1" />
+          <End Role="EntregaProducto" Type="Self.EntregaProducto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pedido">
+              <PropertyRef Name="id_pedido" />
+            </Principal>
+            <Dependent Role="EntregaProducto">
+              <PropertyRef Name="id_pedido" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EntregaProducto_Rappitendero">
+          <End Role="Rappitendero" Type="Self.Rappitendero" Multiplicity="1" />
+          <End Role="EntregaProducto" Type="Self.EntregaProducto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rappitendero">
+              <PropertyRef Name="id_rappitendero" />
+            </Principal>
+            <Dependent Role="EntregaProducto">
+              <PropertyRef Name="id_rappitendero" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_facturacion_Pedido">
+          <End Role="Pedido" Type="Self.Pedido" Multiplicity="1" />
+          <End Role="facturacion" Type="Self.facturacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pedido">
+              <PropertyRef Name="id_pedido" />
+            </Principal>
+            <Dependent Role="facturacion">
+              <PropertyRef Name="id_pedido" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ListaPago_Método_Pago">
+          <End Role="Método_Pago" Type="Self.Método_Pago" Multiplicity="1" />
+          <End Role="ListaPago" Type="Self.ListaPago" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Método_Pago">
+              <PropertyRef Name="id_Mpago" />
+            </Principal>
+            <Dependent Role="ListaPago">
+              <PropertyRef Name="id_Mpago" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_N_Tarjeta_Pago_Método_Pago">
+          <End Role="Método_Pago" Type="Self.Método_Pago" Multiplicity="1" />
+          <End Role="N_Tarjeta_Pago" Type="Self.N_Tarjeta_Pago" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Método_Pago">
+              <PropertyRef Name="id_Mpago" />
+            </Principal>
+            <Dependent Role="N_Tarjeta_Pago">
+              <PropertyRef Name="id_Mpago" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Usuario_Pais">
+          <End Role="Pais" Type="Self.Pais" Multiplicity="1" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pais">
+              <PropertyRef Name="id_pais" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="id_pais" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pedido_Sucursal">
+          <End Role="Sucursal" Type="Self.Sucursal" Multiplicity="1" />
+          <End Role="Pedido" Type="Self.Pedido" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Sucursal">
+              <PropertyRef Name="id_sucursal" />
+            </Principal>
+            <Dependent Role="Pedido">
+              <PropertyRef Name="id_pedido" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TiempEntregaProd_Pedido">
+          <End Role="Pedido" Type="Self.Pedido" Multiplicity="1" />
+          <End Role="TiempEntregaProd" Type="Self.TiempEntregaProd" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pedido">
+              <PropertyRef Name="id_pedido" />
+            </Principal>
+            <Dependent Role="TiempEntregaProd">
+              <PropertyRef Name="id_pedido" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TomaPedido_Pedido">
+          <End Role="Pedido" Type="Self.Pedido" Multiplicity="1" />
+          <End Role="TomaPedido" Type="Self.TomaPedido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pedido">
+              <PropertyRef Name="id_pedido" />
+            </Principal>
+            <Dependent Role="TomaPedido">
+              <PropertyRef Name="id_pedido" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_toppings_Producto">
+          <End Role="Producto" Type="Self.Producto" Multiplicity="1" />
+          <End Role="toppings" Type="Self.toppings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Producto">
+              <PropertyRef Name="id_producto" />
+            </Principal>
+            <Dependent Role="toppings">
+              <PropertyRef Name="id_producto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rappitendero_Usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Rappitendero" Type="Self.Rappitendero" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="id_usuario" />
+            </Principal>
+            <Dependent Role="Rappitendero">
+              <PropertyRef Name="id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Transporte_Rappitendero1">
+          <End Role="Rappitendero" Type="Self.Rappitendero" Multiplicity="1" />
+          <End Role="Transporte" Type="Self.Transporte" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rappitendero">
+              <PropertyRef Name="id_rappitendero" />
+            </Principal>
+            <Dependent Role="Transporte">
+              <PropertyRef Name="id_rappitendero" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="bdrappiEntities2" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CalificacionRappitendero" EntityType="Self.CalificacionRappitendero" />
+          <EntitySet Name="Categoría" EntityType="Self.Categoría" />
+          <EntitySet Name="Ciudad" EntityType="Self.Ciudad" />
+          <EntitySet Name="Cliente" EntityType="Self.Cliente" />
+          <EntitySet Name="CuentaEmpresa" EntityType="Self.CuentaEmpresa" />
+          <EntitySet Name="Cupón_descuento" EntityType="Self.Cupón_descuento" />
+          <EntitySet Name="Detalle_Pedido" EntityType="Self.Detalle_Pedido" />
+          <EntitySet Name="Distrito" EntityType="Self.Distrito" />
+          <EntitySet Name="Empresa" EntityType="Self.Empresa" />
+          <EntitySet Name="Entidad_Financiera" EntityType="Self.Entidad_Financiera" />
+          <EntitySet Name="EntregaProducto" EntityType="Self.EntregaProducto" />
+          <EntitySet Name="facturacion" EntityType="Self.facturacion" />
+          <EntitySet Name="ListaPago" EntityType="Self.ListaPago" />
+          <EntitySet Name="Método_Pago" EntityType="Self.Método_Pago" />
+          <EntitySet Name="N_Tarjeta_Pago" EntityType="Self.N_Tarjeta_Pago" />
+          <EntitySet Name="Pais" EntityType="Self.Pais" />
+          <EntitySet Name="Pedido" EntityType="Self.Pedido" />
+          <EntitySet Name="Producto" EntityType="Self.Producto" />
+          <EntitySet Name="Rappitendero" EntityType="Self.Rappitendero" />
+          <EntitySet Name="Representante_legal" EntityType="Self.Representante_legal" />
+          <EntitySet Name="Resumen_Pago" EntityType="Self.Resumen_Pago" />
+          <EntitySet Name="Rubro" EntityType="Self.Rubro" />
+          <EntitySet Name="Sucursal" EntityType="Self.Sucursal" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="TiempEntregaProd" EntityType="Self.TiempEntregaProd" />
+          <EntitySet Name="TomaPedido" EntityType="Self.TomaPedido" />
+          <EntitySet Name="toppings" EntityType="Self.toppings" />
+          <EntitySet Name="Transporte" EntityType="Self.Transporte" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" />
+          <AssociationSet Name="FK_CalificacionRappitendero_Rappitendero" Association="Self.FK_CalificacionRappitendero_Rappitendero">
+            <End Role="Rappitendero" EntitySet="Rappitendero" />
+            <End Role="CalificacionRappitendero" EntitySet="CalificacionRappitendero" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Categoría_EMPRESA" Association="Self.FK_Categoría_EMPRESA">
+            <End Role="Empresa" EntitySet="Empresa" />
+            <End Role="Categoría" EntitySet="Categoría" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Producto_Categoría" Association="Self.FK_Producto_Categoría">
+            <End Role="Categoría" EntitySet="Categoría" />
+            <End Role="Producto" EntitySet="Producto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ciudad_Pais" Association="Self.FK_Ciudad_Pais">
+            <End Role="Pais" EntitySet="Pais" />
+            <End Role="Ciudad" EntitySet="Ciudad" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Distrito_Ciudad" Association="Self.FK_Distrito_Ciudad">
+            <End Role="Ciudad" EntitySet="Ciudad" />
+            <End Role="Distrito" EntitySet="Distrito" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cliente_Usuario" Association="Self.FK_Cliente_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Cliente" EntitySet="Cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Método_Pago_Cliente" Association="Self.FK_Método_Pago_Cliente">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="Método_Pago" EntitySet="Método_Pago" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CuentaEmpresa_Entidad_Financiera" Association="Self.FK_CuentaEmpresa_Entidad_Financiera">
+            <End Role="Entidad_Financiera" EntitySet="Entidad_Financiera" />
+            <End Role="CuentaEmpresa" EntitySet="CuentaEmpresa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CuentaEmpresa_Pais" Association="Self.FK_CuentaEmpresa_Pais">
+            <End Role="Pais" EntitySet="Pais" />
+            <End Role="CuentaEmpresa" EntitySet="CuentaEmpresa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EMPRESA_CuentaEmpresa" Association="Self.FK_EMPRESA_CuentaEmpresa">
+            <End Role="CuentaEmpresa" EntitySet="CuentaEmpresa" />
+            <End Role="Empresa" EntitySet="Empresa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_N_Tarjeta_Pago_Cupón_descuento" Association="Self.FK_N_Tarjeta_Pago_Cupón_descuento">
+            <End Role="Cupón_descuento" EntitySet="Cupón_descuento" />
+            <End Role="N_Tarjeta_Pago" EntitySet="N_Tarjeta_Pago" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Resumen_Pago_Cupón_descuento" Association="Self.FK_Resumen_Pago_Cupón_descuento">
+            <End Role="Cupón_descuento" EntitySet="Cupón_descuento" />
+            <End Role="Resumen_Pago" EntitySet="Resumen_Pago" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Detalle_Pedido_Pedido" Association="Self.FK_Detalle_Pedido_Pedido">
+            <End Role="Pedido" EntitySet="Pedido" />
+            <End Role="Detalle_Pedido" EntitySet="Detalle_Pedido" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Detalle_Pedido_Producto" Association="Self.FK_Detalle_Pedido_Producto">
+            <End Role="Producto" EntitySet="Producto" />
+            <End Role="Detalle_Pedido" EntitySet="Detalle_Pedido" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Detalle_Pedido_Resumen_Pago" Association="Self.FK_Detalle_Pedido_Resumen_Pago">
+            <End Role="Resumen_Pago" EntitySet="Resumen_Pago" />
+            <End Role="Detalle_Pedido" EntitySet="Detalle_Pedido" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EMPRESA_RUBRO" Association="Self.FK_EMPRESA_RUBRO">
+            <End Role="Rubro" EntitySet="Rubro" />
+            <End Role="Empresa" EntitySet="Empresa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EMPRESA_Usuario" Association="Self.FK_EMPRESA_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Empresa" EntitySet="Empresa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Representante_legal_EMPRESA" Association="Self.FK_Representante_legal_EMPRESA">
+            <End Role="Empresa" EntitySet="Empresa" />
+            <End Role="Representante_legal" EntitySet="Representante_legal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sucursal_EMPRESA" Association="Self.FK_Sucursal_EMPRESA">
+            <End Role="Empresa" EntitySet="Empresa" />
+            <End Role="Sucursal" EntitySet="Sucursal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EntregaProducto_Pedido" Association="Self.FK_EntregaProducto_Pedido">
+            <End Role="Pedido" EntitySet="Pedido" />
+            <End Role="EntregaProducto" EntitySet="EntregaProducto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EntregaProducto_Rappitendero" Association="Self.FK_EntregaProducto_Rappitendero">
+            <End Role="Rappitendero" EntitySet="Rappitendero" />
+            <End Role="EntregaProducto" EntitySet="EntregaProducto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_facturacion_Pedido" Association="Self.FK_facturacion_Pedido">
+            <End Role="Pedido" EntitySet="Pedido" />
+            <End Role="facturacion" EntitySet="facturacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ListaPago_Método_Pago" Association="Self.FK_ListaPago_Método_Pago">
+            <End Role="Método_Pago" EntitySet="Método_Pago" />
+            <End Role="ListaPago" EntitySet="ListaPago" />
+          </AssociationSet>
+          <AssociationSet Name="FK_N_Tarjeta_Pago_Método_Pago" Association="Self.FK_N_Tarjeta_Pago_Método_Pago">
+            <End Role="Método_Pago" EntitySet="Método_Pago" />
+            <End Role="N_Tarjeta_Pago" EntitySet="N_Tarjeta_Pago" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Usuario_Pais" Association="Self.FK_Usuario_Pais">
+            <End Role="Pais" EntitySet="Pais" />
+            <End Role="Usuario" EntitySet="Usuario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pedido_Sucursal" Association="Self.FK_Pedido_Sucursal">
+            <End Role="Sucursal" EntitySet="Sucursal" />
+            <End Role="Pedido" EntitySet="Pedido" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TiempEntregaProd_Pedido" Association="Self.FK_TiempEntregaProd_Pedido">
+            <End Role="Pedido" EntitySet="Pedido" />
+            <End Role="TiempEntregaProd" EntitySet="TiempEntregaProd" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TomaPedido_Pedido" Association="Self.FK_TomaPedido_Pedido">
+            <End Role="Pedido" EntitySet="Pedido" />
+            <End Role="TomaPedido" EntitySet="TomaPedido" />
+          </AssociationSet>
+          <AssociationSet Name="FK_toppings_Producto" Association="Self.FK_toppings_Producto">
+            <End Role="Producto" EntitySet="Producto" />
+            <End Role="toppings" EntitySet="toppings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rappitendero_Usuario" Association="Self.FK_Rappitendero_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Rappitendero" EntitySet="Rappitendero" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Transporte_Rappitendero1" Association="Self.FK_Transporte_Rappitendero1">
+            <End Role="Rappitendero" EntitySet="Rappitendero" />
+            <End Role="Transporte" EntitySet="Transporte" />
+          </AssociationSet>
+          <EntitySet Name="RegistrarTarjeta" EntityType="bdrappiModel.RegistrarTarjeta" />
+          <EntitySet Name="PagoRappitendero" EntityType="bdrappiModel.PagoRappitendero" />
+        </EntityContainer>
+        <EntityType Name="RegistrarTarjeta">
+          <Key>
+            <PropertyRef Name="id_rTarjeta" />
+          </Key>
+          <Property Name="id_rTarjeta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="n_tarjeta" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="apellido" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="fecha_tarjeta" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="cvv" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="PagoRappitendero">
+          <Key>
+            <PropertyRef Name="id_pagoRappi" />
+          </Key>
+          <Property Name="id_pagoRappi" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_pedido" Type="Int32" Nullable="false" />
+          <Property Name="monto" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="bdrappiModelStoreContainer" CdmEntityContainer="bdrappiEntities2">
+          <EntitySetMapping Name="CalificacionRappitendero">
+            <EntityTypeMapping TypeName="bdrappiModel.CalificacionRappitendero">
+              <MappingFragment StoreEntitySet="CalificacionRappitendero">
+                <ScalarProperty Name="id_califrappiden" ColumnName="id_califrappiden" />
+                <ScalarProperty Name="calificacion" ColumnName="calificacion" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="id_rappitendero" ColumnName="id_rappitendero" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categoría">
+            <EntityTypeMapping TypeName="bdrappiModel.Categoría">
+              <MappingFragment StoreEntitySet="Categoría">
+                <ScalarProperty Name="id_categoria" ColumnName="id_categoria" />
+                <ScalarProperty Name="id_empresa" ColumnName="id_empresa" />
+                <ScalarProperty Name="nom_categoria" ColumnName="nom_categoria" />
+                <ScalarProperty Name="descrip_categoria" ColumnName="descrip_categoria" />
+                <ScalarProperty Name="estado_categoria" ColumnName="estado_categoria" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ciudad">
+            <EntityTypeMapping TypeName="bdrappiModel.Ciudad">
+              <MappingFragment StoreEntitySet="Ciudad">
+                <ScalarProperty Name="id_ciudad" ColumnName="id_ciudad" />
+                <ScalarProperty Name="nom_ciudad" ColumnName="nom_ciudad" />
+                <ScalarProperty Name="id_pais" ColumnName="id_pais" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cliente">
+            <EntityTypeMapping TypeName="bdrappiModel.Cliente">
+              <MappingFragment StoreEntitySet="Cliente">
+                <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
+                <ScalarProperty Name="CodigoTelef" ColumnName="CodigoTelef" />
+                <ScalarProperty Name="validarcodigo" ColumnName="validarcodigo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CuentaEmpresa">
+            <EntityTypeMapping TypeName="bdrappiModel.CuentaEmpresa">
+              <MappingFragment StoreEntitySet="CuentaEmpresa">
+                <ScalarProperty Name="id_titular" ColumnName="id_titular" />
+                <ScalarProperty Name="nom_titular" ColumnName="nom_titular" />
+                <ScalarProperty Name="tipo_documento" ColumnName="tipo_documento" />
+                <ScalarProperty Name="tipo_cuenta" ColumnName="tipo_cuenta" />
+                <ScalarProperty Name="num_cuenta" ColumnName="num_cuenta" />
+                <ScalarProperty Name="num_interban" ColumnName="num_interban" />
+                <ScalarProperty Name="domi_fiscal" ColumnName="domi_fiscal" />
+                <ScalarProperty Name="num_titular" ColumnName="num_titular" />
+                <ScalarProperty Name="correo_titular" ColumnName="correo_titular" />
+                <ScalarProperty Name="id_país" ColumnName="id_país" />
+                <ScalarProperty Name="id_entidad" ColumnName="id_entidad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cupón_descuento">
+            <EntityTypeMapping TypeName="bdrappiModel.Cupón_descuento">
+              <MappingFragment StoreEntitySet="Cupón_descuento">
+                <ScalarProperty Name="id_cupon" ColumnName="id_cupon" />
+                <ScalarProperty Name="codig_cupon" ColumnName="codig_cupon" />
+                <ScalarProperty Name="porcentaje_cupon" ColumnName="porcentaje_cupon" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Detalle_Pedido">
+            <EntityTypeMapping TypeName="bdrappiModel.Detalle_Pedido">
+              <MappingFragment StoreEntitySet="Detalle_Pedido">
+                <ScalarProperty Name="id_detalle_pedido" ColumnName="id_detalle_pedido" />
+                <ScalarProperty Name="id_producto" ColumnName="id_producto" />
+                <ScalarProperty Name="id_pedido" ColumnName="id_pedido" />
+                <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+                <ScalarProperty Name="subtotal_productos" ColumnName="subtotal_productos" />
+                <ScalarProperty Name="extras" ColumnName="extras" />
+                <ScalarProperty Name="direccion_entrega" ColumnName="direccion_entrega" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Distrito">
+            <EntityTypeMapping TypeName="bdrappiModel.Distrito">
+              <MappingFragment StoreEntitySet="Distrito">
+                <ScalarProperty Name="id_distrito" ColumnName="id_distrito" />
+                <ScalarProperty Name="nom_distrito" ColumnName="nom_distrito" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="id_ciudad" ColumnName="id_ciudad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Empresa">
+            <EntityTypeMapping TypeName="bdrappiModel.Empresa">
+              <MappingFragment StoreEntitySet="Empresa">
+                <ScalarProperty Name="id_empresa" ColumnName="id_empresa" />
+                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+                <ScalarProperty Name="id_rubro" ColumnName="id_rubro" />
+                <ScalarProperty Name="id_titular" ColumnName="id_titular" />
+                <ScalarProperty Name="nom_tienda" ColumnName="nom_tienda" />
+                <ScalarProperty Name="modelo_tienda" ColumnName="modelo_tienda" />
+                <ScalarProperty Name="tipo_persona" ColumnName="tipo_persona" />
+                <ScalarProperty Name="num_ruc" ColumnName="num_ruc" />
+                <ScalarProperty Name="num_cuenta" ColumnName="num_cuenta" />
+                <ScalarProperty Name="razon_social" ColumnName="razon_social" />
+                <ScalarProperty Name="codigo_referido" ColumnName="codigo_referido" />
+                <ScalarProperty Name="estado_empresa" ColumnName="estado_empresa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Entidad_Financiera">
+            <EntityTypeMapping TypeName="bdrappiModel.Entidad_Financiera">
+              <MappingFragment StoreEntitySet="Entidad_Financiera">
+                <ScalarProperty Name="id_entidad" ColumnName="id_entidad" />
+                <ScalarProperty Name="nom_entidad" ColumnName="nom_entidad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EntregaProducto">
+            <EntityTypeMapping TypeName="bdrappiModel.EntregaProducto">
+              <MappingFragment StoreEntitySet="EntregaProducto">
+                <ScalarProperty Name="id_entrega" ColumnName="id_entrega" />
+                <ScalarProperty Name="id_rappitendero" ColumnName="id_rappitendero" />
+                <ScalarProperty Name="id_pedido" ColumnName="id_pedido" />
+                <ScalarProperty Name="tiempo" ColumnName="tiempo" />
+                <ScalarProperty Name="distancia_total" ColumnName="distancia_total" />
+                <ScalarProperty Name="descrip_recoger" ColumnName="descrip_recoger" />
+                <ScalarProperty Name="descrip_entrega" ColumnName="descrip_entrega" />
+                <ScalarProperty Name="descrip_producto" ColumnName="descrip_producto" />
+                <ScalarProperty Name="cantid_producto" ColumnName="cantid_producto" />
+                <ScalarProperty Name="ganancia_total" ColumnName="ganancia_total" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="facturacion">
+            <EntityTypeMapping TypeName="bdrappiModel.facturacion">
+              <MappingFragment StoreEntitySet="facturacion">
+                <ScalarProperty Name="id_facturacion" ColumnName="id_facturacion" />
+                <ScalarProperty Name="id_pedido" ColumnName="id_pedido" />
+                <ScalarProperty Name="nombre_usuario" ColumnName="nombre_usuario" />
+                <ScalarProperty Name="descrip_pedido" ColumnName="descrip_pedido" />
+                <ScalarProperty Name="direccion_pedido" ColumnName="direccion_pedido" />
+                <ScalarProperty Name="tiempo_pedido" ColumnName="tiempo_pedido" />
+                <ScalarProperty Name="costo_producto" ColumnName="costo_producto" />
+                <ScalarProperty Name="entrega_domicilo" ColumnName="entrega_domicilo" />
+                <ScalarProperty Name="propina" ColumnName="propina" />
+                <ScalarProperty Name="Total_Pago" ColumnName="Total_Pago" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ListaPago">
+            <EntityTypeMapping TypeName="bdrappiModel.ListaPago">
+              <MappingFragment StoreEntitySet="ListaPago">
+                <ScalarProperty Name="id_listaPago" ColumnName="id_listaPago" />
+                <ScalarProperty Name="id_Mpago" ColumnName="id_Mpago" />
+                <ScalarProperty Name="tipo1" ColumnName="tipo1" />
+                <ScalarProperty Name="tarjeta1" ColumnName="tarjeta1" />
+                <ScalarProperty Name="tarjeta2" ColumnName="tarjeta2" />
+                <ScalarProperty Name="tarjeta3" ColumnName="tarjeta3" />
+                <ScalarProperty Name="tarjeta4" ColumnName="tarjeta4" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Método_Pago">
+            <EntityTypeMapping TypeName="bdrappiModel.Método_Pago">
+              <MappingFragment StoreEntitySet="Método_Pago">
+                <ScalarProperty Name="id_Mpago" ColumnName="id_Mpago" />
+                <ScalarProperty Name="tipo_pago" ColumnName="tipo_pago" />
+                <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="N_Tarjeta_Pago">
+            <EntityTypeMapping TypeName="bdrappiModel.N_Tarjeta_Pago">
+              <MappingFragment StoreEntitySet="N_Tarjeta_Pago">
+                <ScalarProperty Name="id_ntpago" ColumnName="id_ntpago" />
+                <ScalarProperty Name="id_Mpago" ColumnName="id_Mpago" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="apellido" ColumnName="apellido" />
+                <ScalarProperty Name="número_tarjeta" ColumnName="número_tarjeta" />
+                <ScalarProperty Name="fecha_expiración" ColumnName="fecha_expiración" />
+                <ScalarProperty Name="codigo_cvv" ColumnName="codigo_cvv" />
+                <ScalarProperty Name="id_cupon" ColumnName="id_cupon" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pais">
+            <EntityTypeMapping TypeName="bdrappiModel.Pais">
+              <MappingFragment StoreEntitySet="Pais">
+                <ScalarProperty Name="id_pais" ColumnName="id_pais" />
+                <ScalarProperty Name="nom_pais" ColumnName="nom_pais" />
+                <ScalarProperty Name="codigopostal" ColumnName="codigopostal" />
+                <ScalarProperty Name="imagen_pais" ColumnName="imagen_pais" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pedido">
+            <EntityTypeMapping TypeName="bdrappiModel.Pedido">
+              <MappingFragment StoreEntitySet="Pedido">
+                <ScalarProperty Name="id_pedido" ColumnName="id_pedido" />
+                <ScalarProperty Name="id_sucursal" ColumnName="id_sucursal" />
+                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+                <ScalarProperty Name="estado_pedido" ColumnName="estado_pedido" />
+                <ScalarProperty Name="Tiempo_preparacion" ColumnName="Tiempo_preparacion" />
+                <ScalarProperty Name="propina" ColumnName="propina" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Producto">
+            <EntityTypeMapping TypeName="bdrappiModel.Producto">
+              <MappingFragment StoreEntitySet="Producto">
+                <ScalarProperty Name="id_producto" ColumnName="id_producto" />
+                <ScalarProperty Name="id_categoria" ColumnName="id_categoria" />
+                <ScalarProperty Name="nom_producto" ColumnName="nom_producto" />
+                <ScalarProperty Name="descrip_producto" ColumnName="descrip_producto" />
+                <ScalarProperty Name="precio_producto" ColumnName="precio_producto" />
+                <ScalarProperty Name="foto_producto" ColumnName="foto_producto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rappitendero">
+            <EntityTypeMapping TypeName="bdrappiModel.Rappitendero">
+              <MappingFragment StoreEntitySet="Rappitendero">
+                <ScalarProperty Name="id_rappitendero" ColumnName="id_rappitendero" />
+                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+                <ScalarProperty Name="foto_dnidel" ColumnName="foto_dnidel" />
+                <ScalarProperty Name="foto_dnitra" ColumnName="foto_dnitra" />
+                <ScalarProperty Name="fecha_vencimiento" ColumnName="fecha_vencimiento" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Representante_legal">
+            <EntityTypeMapping TypeName="bdrappiModel.Representante_legal">
+              <MappingFragment StoreEntitySet="Representante_legal">
+                <ScalarProperty Name="id_rep" ColumnName="id_rep" />
+                <ScalarProperty Name="nom_rep" ColumnName="nom_rep" />
+                <ScalarProperty Name="ape_rep" ColumnName="ape_rep" />
+                <ScalarProperty Name="tipo_rep" ColumnName="tipo_rep" />
+                <ScalarProperty Name="num_rep" ColumnName="num_rep" />
+                <ScalarProperty Name="id_empresa" ColumnName="id_empresa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Resumen_Pago">
+            <EntityTypeMapping TypeName="bdrappiModel.Resumen_Pago">
+              <MappingFragment StoreEntitySet="Resumen_Pago">
+                <ScalarProperty Name="total_cobrar" ColumnName="total_cobrar" />
+                <ScalarProperty Name="costo_producto" ColumnName="costo_producto" />
+                <ScalarProperty Name="id_rpago" ColumnName="id_rpago" />
+                <ScalarProperty Name="id_detalle_pedido" ColumnName="id_detalle_pedido" />
+                <ScalarProperty Name="total_productos" ColumnName="total_productos" />
+                <ScalarProperty Name="tarifa_servicio" ColumnName="tarifa_servicio" />
+                <ScalarProperty Name="id_cupon" ColumnName="id_cupon" />
+                <ScalarProperty Name="Propina" ColumnName="Propina" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rubro">
+            <EntityTypeMapping TypeName="bdrappiModel.Rubro">
+              <MappingFragment StoreEntitySet="Rubro">
+                <ScalarProperty Name="id_rubro" ColumnName="id_rubro" />
+                <ScalarProperty Name="nom_rubro" ColumnName="nom_rubro" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sucursal">
+            <EntityTypeMapping TypeName="bdrappiModel.Sucursal">
+              <MappingFragment StoreEntitySet="Sucursal">
+                <ScalarProperty Name="id_sucursal" ColumnName="id_sucursal" />
+                <ScalarProperty Name="direccion_sucursal" ColumnName="direccion_sucursal" />
+                <ScalarProperty Name="id_empresa" ColumnName="id_empresa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="bdrappiModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TiempEntregaProd">
+            <EntityTypeMapping TypeName="bdrappiModel.TiempEntregaProd">
+              <MappingFragment StoreEntitySet="TiempEntregaProd">
+                <ScalarProperty Name="id_tiempEntrega" ColumnName="id_tiempEntrega" />
+                <ScalarProperty Name="id_pedido" ColumnName="id_pedido" />
+                <ScalarProperty Name="direccion_entrega" ColumnName="direccion_entrega" />
+                <ScalarProperty Name="entrega_estimada" ColumnName="entrega_estimada" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TomaPedido">
+            <EntityTypeMapping TypeName="bdrappiModel.TomaPedido">
+              <MappingFragment StoreEntitySet="TomaPedido">
+                <ScalarProperty Name="id_tomaPedido" ColumnName="id_tomaPedido" />
+                <ScalarProperty Name="id_pedido" ColumnName="id_pedido" />
+                <ScalarProperty Name="direccion_recoger" ColumnName="direccion_recoger" />
+                <ScalarProperty Name="direccion_entrega" ColumnName="direccion_entrega" />
+                <ScalarProperty Name="ganancia_total" ColumnName="ganancia_total" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="toppings">
+            <EntityTypeMapping TypeName="bdrappiModel.toppings">
+              <MappingFragment StoreEntitySet="toppings">
+                <ScalarProperty Name="id_topping" ColumnName="id_topping" />
+                <ScalarProperty Name="nom_topping" ColumnName="nom_topping" />
+                <ScalarProperty Name="descrip_topping" ColumnName="descrip_topping" />
+                <ScalarProperty Name="precio_topping" ColumnName="precio_topping" />
+                <ScalarProperty Name="id_producto" ColumnName="id_producto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Transporte">
+            <EntityTypeMapping TypeName="bdrappiModel.Transporte">
+              <MappingFragment StoreEntitySet="Transporte">
+                <ScalarProperty Name="id_transporte" ColumnName="id_transporte" />
+                <ScalarProperty Name="id_rappitendero" ColumnName="id_rappitendero" />
+                <ScalarProperty Name="tipo_transporte" ColumnName="tipo_transporte" />
+                <ScalarProperty Name="foto_licenciadel" ColumnName="foto_licenciadel" />
+                <ScalarProperty Name="foto_licenciatra" ColumnName="foto_licenciatra" />
+                <ScalarProperty Name="fecha_venc_lic" ColumnName="fecha_venc_lic" />
+                <ScalarProperty Name="foto_soadel" ColumnName="foto_soadel" />
+                <ScalarProperty Name="foto_soaad" ColumnName="foto_soaad" />
+                <ScalarProperty Name="fec_venc_soa" ColumnName="fec_venc_soa" />
+                <ScalarProperty Name="num_placa" ColumnName="num_placa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuario">
+            <EntityTypeMapping TypeName="bdrappiModel.Usuario">
+              <MappingFragment StoreEntitySet="Usuario">
+                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+                <ScalarProperty Name="nom_usuario" ColumnName="nom_usuario" />
+                <ScalarProperty Name="ape_usuario" ColumnName="ape_usuario" />
+                <ScalarProperty Name="correo_usuario" ColumnName="correo_usuario" />
+                <ScalarProperty Name="clave_usuario" ColumnName="clave_usuario" />
+                <ScalarProperty Name="celular_usuario" ColumnName="celular_usuario" />
+                <ScalarProperty Name="T_documento" ColumnName="T_documento" />
+                <ScalarProperty Name="N_documento" ColumnName="N_documento" />
+                <ScalarProperty Name="fechnac" ColumnName="fechnac" />
+                <ScalarProperty Name="sexo" ColumnName="sexo" />
+                <ScalarProperty Name="id_pais" ColumnName="id_pais" />
+                <ScalarProperty Name="direccion_usuario" ColumnName="direccion_usuario" />
+                <ScalarProperty Name="foto_usuario" ColumnName="foto_usuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RegistrarTarjeta">
+            <EntityTypeMapping TypeName="bdrappiModel.RegistrarTarjeta">
+              <MappingFragment StoreEntitySet="RegistrarTarjeta">
+                <ScalarProperty Name="cvv" ColumnName="cvv" />
+                <ScalarProperty Name="fecha_tarjeta" ColumnName="fecha_tarjeta" />
+                <ScalarProperty Name="apellido" ColumnName="apellido" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="n_tarjeta" ColumnName="n_tarjeta" />
+                <ScalarProperty Name="id_rTarjeta" ColumnName="id_rTarjeta" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PagoRappitendero">
+            <EntityTypeMapping TypeName="bdrappiModel.PagoRappitendero">
+              <MappingFragment StoreEntitySet="PagoRappitendero">
+                <ScalarProperty Name="monto" ColumnName="monto" />
+                <ScalarProperty Name="id_pedido" ColumnName="id_pedido" />
+                <ScalarProperty Name="id_pagoRappi" ColumnName="id_pagoRappi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c72c5b7409534455a3fa338f7defa2db" Name="Diagram1" ZoomLevel="93">
+        <EntityTypeShape EntityType="bdrappiModel.CalificacionRappitendero" Width="1.5" PointX="7.5" PointY="28.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="bdrappiModel.Categoría" Width="1.5" PointX="10.5" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="bdrappiModel.Ciudad" Width="1.5" PointX="3" PointY="17.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="bdrappiModel.Cliente" Width="1.5" PointX="5.25" PointY="25.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="bdrappiModel.CuentaEmpresa" Width="1.5" PointX="3" PointY="22" IsExpanded="true" />
+        <EntityTypeShape EntityType="bdrappiModel.Cupón_descuento" Width="1.5" PointX="10.5" PointY="21" IsExpanded="true" />
+        <EntityTypeShape EntityType="bdrappiModel.Detalle_Pedido" Width="1.5" PointX="15" PointY="21.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="bdrappiModel.Distrito" Width="1.5" PointX="5.25" PointY="17.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="bdrappiModel.Empresa" Width="1.5" PointX="8.25" PointY="19.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="bdrappiModel.Entidad_Financiera" Width="1.5" PointX="0.75" PointY="20" IsExpanded="true" />
+        <EntityTypeShape EntityType="bdrappiModel.EntregaProducto" Width="1.5" PointX="15" PointY="28.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="bdrappiModel.facturacion" Width="1.5" PointX="15" PointY="33.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="bdrappiModel.ListaPago" Width="1.5" PointX="9.75" PointY="25.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="bdrappiModel.Método_Pago" Width="1.5" PointX="7.5" PointY="25.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="bdrappiModel.N_Tarjeta_Pago" Width="1.5" PointX="12.75" PointY="24.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="bdrappiModel.Pais" Width="1.5" PointX="0.75" PointY="22.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="bdrappiModel.Pedido" Width="1.5" PointX="12.75" PointY="33.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="bdrappiModel.Producto" Width="1.5" PointX="12.75" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="bdrappiModel.Rappitendero" Width="1.5" PointX="5.25" PointY="29.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="bdrappiModel.Representante_legal" Width="1.5" PointX="10.5" PointY="16.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="bdrappiModel.Resumen_Pago" Width="1.5" PointX="12.75" PointY="20.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="bdrappiModel.Rubro" Width="1.5" PointX="6" PointY="21.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="bdrappiModel.Sucursal" Width="1.5" PointX="10.5" PointY="34.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="bdrappiModel.sysdiagrams" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="bdrappiModel.TiempEntregaProd" Width="1.5" PointX="15" PointY="40" IsExpanded="true" />
+        <EntityTypeShape EntityType="bdrappiModel.TomaPedido" Width="1.5" PointX="15" PointY="42.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="bdrappiModel.toppings" Width="1.5" PointX="15" PointY="17.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="bdrappiModel.Transporte" Width="1.5" PointX="7.5" PointY="31.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="bdrappiModel.Usuario" Width="1.5" PointX="3" PointY="27.5" IsExpanded="true" />
+        <AssociationConnector Association="bdrappiModel.FK_CalificacionRappitendero_Rappitendero" ManuallyRouted="false" />
+        <AssociationConnector Association="bdrappiModel.FK_Categoría_EMPRESA" ManuallyRouted="false" />
+        <AssociationConnector Association="bdrappiModel.FK_Producto_Categoría" ManuallyRouted="false" />
+        <AssociationConnector Association="bdrappiModel.FK_Ciudad_Pais" ManuallyRouted="false" />
+        <AssociationConnector Association="bdrappiModel.FK_Distrito_Ciudad" ManuallyRouted="false" />
+        <AssociationConnector Association="bdrappiModel.FK_Cliente_Usuario" ManuallyRouted="false" />
+        <AssociationConnector Association="bdrappiModel.FK_Método_Pago_Cliente" ManuallyRouted="false" />
+        <AssociationConnector Association="bdrappiModel.FK_CuentaEmpresa_Entidad_Financiera" ManuallyRouted="false" />
+        <AssociationConnector Association="bdrappiModel.FK_CuentaEmpresa_Pais" ManuallyRouted="false" />
+        <AssociationConnector Association="bdrappiModel.FK_EMPRESA_CuentaEmpresa" ManuallyRouted="false" />
+        <AssociationConnector Association="bdrappiModel.FK_N_Tarjeta_Pago_Cupón_descuento" ManuallyRouted="false" />
+        <AssociationConnector Association="bdrappiModel.FK_Resumen_Pago_Cupón_descuento" ManuallyRouted="false" />
+        <AssociationConnector Association="bdrappiModel.FK_Detalle_Pedido_Pedido" ManuallyRouted="false" />
+        <AssociationConnector Association="bdrappiModel.FK_Detalle_Pedido_Producto" ManuallyRouted="false" />
+        <AssociationConnector Association="bdrappiModel.FK_Detalle_Pedido_Resumen_Pago" ManuallyRouted="false" />
+        <AssociationConnector Association="bdrappiModel.FK_EMPRESA_RUBRO" ManuallyRouted="false" />
+        <AssociationConnector Association="bdrappiModel.FK_EMPRESA_Usuario" ManuallyRouted="false" />
+        <AssociationConnector Association="bdrappiModel.FK_Representante_legal_EMPRESA" ManuallyRouted="false" />
+        <AssociationConnector Association="bdrappiModel.FK_Sucursal_EMPRESA" ManuallyRouted="false" />
+        <AssociationConnector Association="bdrappiModel.FK_EntregaProducto_Pedido" ManuallyRouted="false" />
+        <AssociationConnector Association="bdrappiModel.FK_EntregaProducto_Rappitendero" ManuallyRouted="false" />
+        <AssociationConnector Association="bdrappiModel.FK_facturacion_Pedido" ManuallyRouted="false" />
+        <AssociationConnector Association="bdrappiModel.FK_ListaPago_Método_Pago" ManuallyRouted="false" />
+        <AssociationConnector Association="bdrappiModel.FK_N_Tarjeta_Pago_Método_Pago" ManuallyRouted="false" />
+        <AssociationConnector Association="bdrappiModel.FK_Usuario_Pais" ManuallyRouted="false" />
+        <AssociationConnector Association="bdrappiModel.FK_Pedido_Sucursal" ManuallyRouted="false" />
+        <AssociationConnector Association="bdrappiModel.FK_TiempEntregaProd_Pedido" ManuallyRouted="false" />
+        <AssociationConnector Association="bdrappiModel.FK_TomaPedido_Pedido" ManuallyRouted="false" />
+        <AssociationConnector Association="bdrappiModel.FK_toppings_Producto" ManuallyRouted="false" />
+        <AssociationConnector Association="bdrappiModel.FK_Rappitendero_Usuario" ManuallyRouted="false" />
+        <AssociationConnector Association="bdrappiModel.FK_Transporte_Rappitendero1" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="bdrappiModel.RegistrarTarjeta" Width="1.5" PointX="17.25" PointY="17.125" />
+        <EntityTypeShape EntityType="bdrappiModel.PagoRappitendero" Width="1.5" PointX="15.875" PointY="12.125" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
